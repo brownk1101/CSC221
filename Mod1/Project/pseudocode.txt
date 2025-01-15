@@ -1,0 +1,14 @@
+The purpose of this program is to read a file, remove punctuation, and output the result to another file not including words that contain non-alphabetic characters.
+
+read input file
+for each word in each line
+    remove punctuation
+    remove word if contains non-alphabetic characters
+    store line for output
+
+count amount of words
+find longest word in output
+
+display word count
+display longest word
+write stored lines to output file
