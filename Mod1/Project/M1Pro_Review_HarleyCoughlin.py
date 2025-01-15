@@ -16,6 +16,10 @@ def main():
         print(f'File {input_file} not found')
 
     if contents is not None:
+        print(f'Total words: {Functions.word_count(contents)}')
+        longest_word = Functions.longest_word(contents)
+        if longest_word is not None:
+            print(f'Longest word: {longest_word}')
         Functions.write_file(filename=output_file, lines=contents)
 
 

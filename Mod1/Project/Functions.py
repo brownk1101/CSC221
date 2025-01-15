@@ -29,3 +29,19 @@ def write_file(filename:str, lines: list[list[str]]) -> None:
         for line in lines:
             # Rebuild the string and end with a newline.
             file.write(' '.join(line) + '\n')
+
+def word_count(lines: list[list[str]]) -> int:
+    total_words = 0
+    for line in lines:
+        total_words += len(line)
+    return total_words
+
+def longest_word(lines: list[list[str]]) -> str | None:
+    longest_length = 0
+    longest_word = None
+    for line in lines:
+        for word in line:
+            if len(word) > longest_length:
+                longest_length = len(word)
+                longest_word = word
+    return longest_word
