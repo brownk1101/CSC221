@@ -1,0 +1,31 @@
+Symbol,Company,Exchange,Industry,Date added,Notes,Index weighting
+MMM,3M,NYSE,Conglomerate,1976-08-09,As Minnesota Mining and Manufacturing,3.84%
+AXP,American Express,NYSE,Financial services,1982-08-30,,2.88%
+AMGN,Amgen,NASDAQ,Pharmaceutical industry,2020-08-31,,4.87%
+AAPL,Apple Inc.,NASDAQ,Information technology,2015-03-19,,2.57%
+BA,Boeing,NYSE,Aerospace and defense,1987-03-12,,4.92%
+CAT,Caterpillar Inc.,NYSE,Construction and Mining,1991-05-06,,4.54%
+CVX,Chevron Corporation,NYSE,Petroleum industry,2008-02-19,Also 1930-07-18 to 1999-11-01,2.03%
+CSCO,Cisco Systems,NASDAQ,Information technology,2009-06-08,,1.00%
+KO,The Coca-Cola Company,NYSE,Food industry,1987-03-12,Also 1932-05-26 to 1935-11-20,1.04%
+DOW,Dow Inc.,NYSE,Chemical industry,2019-04-02,,1.25%
+GS,Goldman Sachs,NYSE,Financial services,2013-09-20,,6.54%
+HD,The Home Depot,NYSE,Retailing,1999-11-01,,6.24%
+HON,Honeywell,NASDAQ,Conglomerate,2020-08-31,,4.47%
+IBM,IBM,NYSE,Information technology,1979-06-29,Also 1932-05-26 to 1939-03-04,2.59%
+INTC,Intel,NASDAQ,Information technology,1999-11-01,,1.25%
+JNJ,Johnson & Johnson,NYSE,Pharmaceutical industry,1997-03-17,,3.12%
+JPM,JPMorgan Chase,NYSE,Financial services,1991-05-06,,2.95%
+MCD,McDonald's,NYSE,Food industry,1985-10-30,,4.49%
+MRK,Merck & Co.,NYSE,Pharmaceutical industry,1979-06-29,,1.49%
+MSFT,Microsoft,NASDAQ,Information technology,1999-11-01,,4.98%
+NKE,"Nike, Inc.",NYSE,Apparel,2013-09-20,,2.58%
+PG,Procter & Gamble,NYSE,Fast-moving consumer goods,1932-05-26,,2.64%
+CRM,Salesforce,NYSE,Information technology,2020-08-31,,4.45%
+TRV,The Travelers Companies,NYSE,Financial services,2009-06-08,,3.03%
+UNH,UnitedHealth Group,NYSE,Managed health care,2012-09-24,,7.33%
+VZ,Verizon Communications,NYSE,Telecommunication,2004-04-08,,1.13%
+V,Visa Inc.,NYSE,Financial services,2013-09-20,,4.33%
+WBA,Walgreens Boots Alliance,NASDAQ,Retailing,2018-06-26,,1.06%
+WMT,Walmart,NYSE,Retailing,1997-03-17,,2.72%
+DIS,The Walt Disney Company,NYSE,Broadcasting and entertainment,1991-05-06,,3.66%
