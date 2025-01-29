@@ -88,7 +88,7 @@ def stage_three(djia: pd.DataFrame) -> None:
     print(djia[djia.Industry == "Information technology"])
     print(f"{'':~>80}")
 
-def stage_four(djia: pd.DataFrame) -> None:
+def stage_four(djia: pd.DataFrame, djia_prices: pd.DataFrame) -> None:
     """
     Parameters
     ----------
@@ -107,6 +107,7 @@ def stage_four(djia: pd.DataFrame) -> None:
     print()
 
     print("Joining djia-prices csv to the DataFrame:")
+    print(djia.join(djia_prices))
     print(f"{'':~>80}")
 
 
@@ -116,6 +117,7 @@ def main():
     error = False
     done = False
     djia: pd.DataFrame = pd.DataFrame()
+    djia_prices: pd.DataFrame = pd.DataFrame()
 
     while not error and not done:
         try:
@@ -126,7 +128,11 @@ def main():
 
         stage_two(djia)
         stage_three(djia)
-        stage_four(djia)
+        try:
+            djia_prices = pd.read_csv("./djia-prices.csv", index_col="Symbol")
+        except FileNotFoundError:
+            print("Couldn't find djia-priecs.csv in the current directory")
+        stage_four(djia, djia_prices)
 
         done = True
 
