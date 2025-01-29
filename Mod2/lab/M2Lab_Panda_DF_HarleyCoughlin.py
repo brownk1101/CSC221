@@ -38,8 +38,36 @@ def stage_one(pathname:str) -> pd.DataFrame:
 
     print(f"First row: {djia.head(1)}")
     print(f"Last row: {djia.tail(1)}")
+    print(f"{'':~>80}")
 
     return djia
+
+def stage_two(djia: pd.DataFrame) -> None:
+    """Display specific data from within the DataFrame.
+
+    Parameters
+    ----------
+    djia: pd.DataFrame
+        DataFrame to display information from.
+    """
+    print("Stage 2: Accessing rows, columns, and cells")
+    print("Displaying Company column:")
+    print(djia.Company)
+    print()
+
+    print("Displaying Company and Industry:")
+    columns_to_display: list[str] = ["Company", "Industry"]
+    print(djia[columns_to_display])
+    print()
+
+    print("Displaying AAPL row:")
+    print(djia.loc["AAPL"])
+    print()
+
+    print("Displaying AAPL Exchange:")
+    print(djia["Exchange"]["AAPL"])
+    print()
+    print(f"{'':~>80}")
 
 
 def main():
@@ -47,17 +75,18 @@ def main():
 
     error = False
     done = False
+    djia: pd.DataFrame = pd.DataFrame()
 
     while not error and not done:
         try:
-            stage_one("./djia.csv")
+            djia = stage_one("./djia.csv")
         except FileNotFoundError:
             print("Couldn't find djia.csv in the current directory")
             error = True
 
+        stage_two(djia)
 
         done = True
-    ...
 
 
 if __name__ == "__main__":
