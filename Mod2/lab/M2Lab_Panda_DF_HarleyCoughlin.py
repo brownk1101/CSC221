@@ -99,9 +99,11 @@ def stage_four(djia: pd.DataFrame) -> None:
     print()
 
     print("Displaying rows with Notes:")
+    print(djia[djia.Notes.notna()])
     print()
 
     print("Displaying a DataFrame without Notes:")
+    print(djia[djia.Notes.isna()])
     print()
 
     print("Joining djia-prices csv to the DataFrame:")
