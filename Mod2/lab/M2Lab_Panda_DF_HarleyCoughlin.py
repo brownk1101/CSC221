@@ -43,7 +43,7 @@ def stage_one(pathname:str) -> pd.DataFrame:
     return djia
 
 def stage_two(djia: pd.DataFrame) -> None:
-    """Display specific data from within the DataFrame.
+    """Displays specific data from within the DataFrame.
 
     Parameters
     ----------
@@ -66,7 +66,45 @@ def stage_two(djia: pd.DataFrame) -> None:
 
     print("Displaying AAPL Exchange:")
     print(djia["Exchange"]["AAPL"])
+    print(f"{'':~>80}")
+
+def stage_three(djia: pd.DataFrame) -> None:
+    """Filters and sorts information in a DataFrame
+
+    Parameters
+    ----------
+    djia: pd.DataFrame
+        DataFrame to manipulate.
+    """
+    print("Filtering, sorting")
     print()
+
+    print("Displaying data sorted by Industry, then Company:")
+    sort_by: list[str] = ["Industry", "Company"]
+    print(djia.sort_values(sort_by))
+    print()
+
+    print("Displaying Information Technology rows:")
+    print(djia[djia.Industry == "Information technology"])
+    print(f"{'':~>80}")
+
+def stage_four(djia: pd.DataFrame) -> None:
+    """
+    Parameters
+    ----------
+    djia: pd.DataFrame
+        DataFrame to manipulate.
+    """
+    print("Missing Values, Dropping, Joining")
+    print()
+
+    print("Displaying rows with Notes:")
+    print()
+
+    print("Displaying a DataFrame without Notes:")
+    print()
+
+    print("Joining djia-prices csv to the DataFrame:")
     print(f"{'':~>80}")
 
 
@@ -85,6 +123,8 @@ def main():
             error = True
 
         stage_two(djia)
+        stage_three(djia)
+        stage_four(djia)
 
         done = True
 
