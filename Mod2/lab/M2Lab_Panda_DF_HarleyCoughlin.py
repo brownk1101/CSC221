@@ -5,11 +5,24 @@
 
 import pandas as pd
 
-def stage_one() -> pd.DataFrame:
+def stage_one(pathname:str) -> pd.DataFrame:
+    """This function loads a CSV into a DataFrame, displays it, and returns the
+    DataFrame.
+    
+    Parameters
+    ----------
+    pathname: str
+        The csv file to be loaded.
+
+    Returns
+    -------
+    djia: pd.DataFrame
+        The DataFrame created from the csv.
+    """
     print("Stage 1: Loading and getting information")
     print("Loading djia.csv")
 
-    djia = pd.read_csv("./djia.csv", index_col="Symbol")
+    djia = pd.read_csv(pathname, index_col="Symbol")
 
     print("djia.csv loaded")
     print(djia)
@@ -37,7 +50,7 @@ def main():
 
     while not error and not done:
         try:
-            stage_one()
+            stage_one("./djia.csv")
         except FileNotFoundError:
             print("Couldn't find djia.csv in the current directory")
             error = True
