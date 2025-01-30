@@ -6,6 +6,7 @@
 import display
 import extract
 import menu
+import transform
 import pandas as pd
 
 def main():
@@ -30,6 +31,11 @@ def main():
         match choice:
             case 1:
                 display.first_fifteen(titanic)
+            case 2:
+                display.records_amount(titanic)
+            case 3:
+                survivors = transform.get_survivors(titanic)
+                display.survivor_amounts(survivors)
             case 8:
                 # TODO: Change this
                 print("Thanks for stopping by.")
