@@ -2,7 +2,6 @@
 
 def print_menu() -> None:
     """This function prints the menu"""
-
     print("M2Pro: Titanic")
     print("1. Display Dataset")
     print("2. Get the number of records(passengers) listed in the dataset.")
