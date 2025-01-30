@@ -132,6 +132,7 @@ def main():
             djia_prices = pd.read_csv("./djia-prices.csv", index_col="Symbol")
         except FileNotFoundError:
             print("Couldn't find djia-priecs.csv in the current directory")
+            error = True
         stage_four(djia, djia_prices)
 
         done = True
