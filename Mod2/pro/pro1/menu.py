@@ -1,7 +1,4 @@
-# This a menu driven program using DataFrames, exception handling, functions, and file processing
-# 01/29/2025
-# CSC221 M2Pro1-Panda DF
-# Harley Coughlin
+"""This module contains functions related to the menu of M2Pro1"""
 
 def print_menu() -> None:
     """This function prints the menu"""
@@ -35,14 +32,3 @@ def get_menu_choice() -> int:
             continue
 
     return choice
-
-
-def main():
-    choice: int = 0
-    while choice != 8:
-        print_menu()
-        choice = get_menu_choice()
-
-
-if __name__ == "__main__":
-    main()
