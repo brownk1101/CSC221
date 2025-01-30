@@ -3,7 +3,7 @@
 # CSC221 M1Pro-Review
 # Harley Coughlin
 
-import Functions
+import functions
 
 def main():
     input_file = './words.txt'
@@ -11,16 +11,19 @@ def main():
     contents = None
 
     try:
-        contents = Functions.read_file(filename=input_file)
+        contents = functions.read_file(filename=input_file)
     except FileNotFoundError:
         print(f'File {input_file} not found')
 
     if contents is not None:
-        print(f'Total words: {Functions.word_count(contents)}')
-        longest_word = Functions.longest_word(contents)
+        print(f'Total words: {functions.word_count(contents)}')
+        # Longest word could potentially return None if there is nothing in
+        # contents.
+        longest_word = functions.longest_word(contents)
         if longest_word is not None:
             print(f'Longest word: {longest_word}')
-        Functions.write_file(filename=output_file, lines=contents)
+
+        functions.write_file(filename=output_file, lines=contents)
 
 
 if __name__ == '__main__':

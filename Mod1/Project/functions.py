@@ -37,6 +37,7 @@ def word_count(lines: list[list[str]]) -> int:
     return total_words
 
 def longest_word(lines: list[list[str]]) -> str | None:
+    # If there are no words in the list then theoretically there is no longest word.
     longest_length = 0
     longest_word = None
     for line in lines:
