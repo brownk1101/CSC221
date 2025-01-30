@@ -3,6 +3,7 @@
 # CSC221 M2Pro1-Panda DF
 # Harley Coughlin
 
+import display
 import extract
 import menu
 import pandas as pd
@@ -26,6 +27,12 @@ def main():
     while not error and choice != 8:
         menu.print_menu()
         choice = menu.get_menu_choice()
+        match choice:
+            case 1:
+                display.first_fifteen(titanic)
+            case 8:
+                # TODO: Change this
+                print("Thanks for stopping by.")
 
 
 if __name__ == "__main__":
