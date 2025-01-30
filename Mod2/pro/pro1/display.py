@@ -23,4 +23,17 @@ def records_amount(data: pd.DataFrame) -> None:
     data: DataFrame
         The DataFrame to display the amount of records
     """
-    print(len(data))
+    print(f"Amount of passengers: {len(data)}")
+
+
+def survivor_amounts(data: tuple[int], separate: bool = False) -> None:
+    """Prints the amount of survivors vs dead for a given group of people.
+
+    Parameters
+    ----------
+    data: tuple[int]
+        The survivor amounts to display.
+    separate: bool (default = False)
+        Whether or not to separate the groups information.
+    """
+    raise NotImplementedError
