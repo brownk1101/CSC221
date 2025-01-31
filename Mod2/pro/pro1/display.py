@@ -54,5 +54,4 @@ def survivor_amounts(people, who: str = "All") -> None:
             print(f" Female Survivors: {people[0][0]}, Female  Dead: {people[0][1]}")
         case "Males Survived":
             print(f" Male Survivors: {people[0][0]}, Male  Dead: {people[0][1]}")
-
     print()

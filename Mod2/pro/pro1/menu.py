@@ -14,8 +14,7 @@ def print_menu() -> None:
 
 
 def get_menu_choice() -> int:
-    """This function prompts the user for input, validates it, then returns the
-    input
+    """This function prompts the user for input, validates it, then returns the input.
 
     Returns
     -------
@@ -29,5 +28,34 @@ def get_menu_choice() -> int:
         except ValueError:
             print("Invalid: please enter a valid integer.")
             continue
+
+    return choice
+
+
+def print_submenu_option4():
+    """Print menu option 4 submenu."""
+    print()
+    print("Option 4 submenu")
+    print("Females Survived")
+    print("Males Survived")
+    print("Both")
+
+def get_submenu_option4_choice() -> str:
+    """Prompts user to enter string, validates against submenu options.
+    
+    Returns
+    -------
+    choice: str
+        Menu option entered by the user.
+    """
+    choices = ["females survived", "males survived", "both"]
+    choice = ""
+
+    choice = input("Please type your choice: ")
+    choice = choice.strip().lower()
+
+    while choice not in choices:
+        choice = input("Invalid: Please type your choice: ")
+        choice = choice.strip().lower()
 
     return choice
