@@ -3,34 +3,34 @@
 import pandas as pd
 
 
-def get_survivors(data: pd.DataFrame, who: str = "Both"):
+def get_survivors(data: pd.DataFrame, who: str = "both"):
     """Extracts information on survived vs dead for a given group of passengers
 
     Prameters
     ---------
     data: pd.DataFrame
         The DataFrame to extract information from.
-    who: str (default = "Both")
+    who: str (default = "both")
         The group of passengers to extract information about.
 
     Returns
     -------
     tuple
-        if who="Both", returns a tuple of ((female_alive, female_dead),
+        if who="both", returns a tuple of ((female_alive, female_dead),
         (male_alive, male_dead))
         Otherwise returns a tuple of (alive, dead)
     """
-    if who == "Both":
-        return (get_survivors(data, "Females Survived"),
-                get_survivors(data, "Males Survived"))
+    if who == "both":
+        return (get_survivors(data, "females survived"),
+                get_survivors(data, "males survived"))
     else:
-        if who == "Females Survived":
+        if who == "females survived":
             filter = "female"
-        elif who == "Males Survived":
+        elif who == "males survived":
             filter = "male"
         else:
-            raise ValueError("""'who' must be 'Both', 'Females Survived', or
-                                'Males Survived'""")
+            raise ValueError("""'who' must be 'Both', 'females survived', or
+                                'males survived'""")
         people = data[data.gender == filter]["survived"]
         amount_alive = 0
         amount_dead = 0
