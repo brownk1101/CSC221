@@ -48,10 +48,10 @@ def survivor_amounts(people, who: str = "all") -> None:
             dead = people[0][1] + people[1][1]
             print(f"Survivors: {survivors}, Dead: {dead}")
         case "both":
-            print(f" Female Survivors: {people[0][0]}, Female Dead: {people[0][1]}")
-            print(f" Male Survivors: {people[1][0]}, Male Dead: {people[1][1]}")
+            print(f"Female Survivors: {people[0][0]}, Female Dead: {people[0][1]}")
+            print(f"Male Survivors: {people[1][0]}, Male Dead: {people[1][1]}")
         case "females survived":
-            print(f" Female Survivors: {people[0]}, Female Dead: {people[1]}")
+            print(f"Female Survivors: {people[0]}, Female Dead: {people[1]}")
         case "males survived":
-            print(f" Male Survivors: {people[0]}, Male Dead: {people[1]}")
+            print(f"Male Survivors: {people[0]}, Male Dead: {people[1]}")
     print()
