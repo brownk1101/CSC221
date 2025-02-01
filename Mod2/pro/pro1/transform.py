@@ -29,7 +29,7 @@ def get_survivors(data: pd.DataFrame, who: str = "both"):
         elif who == "males survived":
             filter = "male"
         else:
-            raise ValueError("""'who' must be 'Both', 'females survived', or
+            raise ValueError("""'who' must be 'both', 'females survived', or
                                 'males survived'""")
         people = data[data.gender == filter]["survived"]
         amount_alive = 0
