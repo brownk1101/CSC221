@@ -30,7 +30,7 @@ def records_amount(data: pd.DataFrame) -> None:
     print()
 
 
-def survivor_amounts(people, who: str = "All") -> None:
+def survivor_amounts(people, who: str = "all") -> None:
     """Prints the amount of survivors vs dead for a given group of people.
 
     Parameters
@@ -39,19 +39,19 @@ def survivor_amounts(people, who: str = "All") -> None:
         The survivor amounts to display.
     who: str
         The group of passengers to print information about.
-        Options: "All", "Both", "Females Survived", "Males Survived"
+        Options: "all", "both", "females survived", "males survived"
     """
     print()
     match who:
-        case "All":
+        case "all":
             survivors = people[0][0] + people[1][0]
             dead = people[0][1] + people[1][1]
             print(f"Survivors: {survivors}, Dead: {dead}")
-        case "Both":
-            print(f" Female Survivors: {people[0][0]}, Female  Dead: {people[0][1]}")
-            print(f" Male Survivors: {people[1][0]}, Male  Dead: {people[1][1]}")
-        case "Females Survived":
-            print(f" Female Survivors: {people[0][0]}, Female  Dead: {people[0][1]}")
-        case "Males Survived":
-            print(f" Male Survivors: {people[0][0]}, Male  Dead: {people[0][1]}")
+        case "both":
+            print(f" Female Survivors: {people[0][0]}, Female Dead: {people[0][1]}")
+            print(f" Male Survivors: {people[1][0]}, Male Dead: {people[1][1]}")
+        case "females survived":
+            print(f" Female Survivors: {people[0]}, Female Dead: {people[1]}")
+        case "males survived":
+            print(f" Male Survivors: {people[0]}, Male Dead: {people[1]}")
     print()

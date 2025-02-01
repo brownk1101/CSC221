@@ -46,7 +46,7 @@ def main():
                 menu.print_submenu_option4()
                 submenu_choice = menu.get_submenu_option4_choice()
                 try:
-                    # There shouldn't be an error herer as validation occurs in
+                    # There shouldn't be an error here as validation occurs in
                     # menu.
                     survivors = transform.get_survivors(titanic, submenu_choice)
                     display.survivor_amounts(survivors, submenu_choice)
