@@ -20,29 +20,15 @@ def get_survivors(data: pd.DataFrame, who: str = "both"):
         (male_alive, male_dead))
         Otherwise returns a tuple of (alive, dead)
     """
-    if who == "both":
-        return (get_survivors(data, "females survived"),
-                get_survivors(data, "males survived"))
-    else:
-        if who == "females survived":
-            filter = "female"
-        elif who == "males survived":
-            filter = "male"
-        else:
-            raise ValueError("""'who' must be 'both', 'females survived', or
-                                'males survived'""")
-        people = data[data.gender == filter]["survived"]
-        amount_alive = 0
-        amount_dead = 0
-        # Count survived(1) and dead(0)
-        for person in people:
-            if person == 1:
-                amount_alive += 1
-            else:
-                amount_dead += 1
+    people = data.groupby("gender")["survived"].value_counts().unstack()
+    people.columns = ["dead", "survived"]
 
-        return (amount_alive, amount_dead)
+    if who == "females survived":
+        people = people.loc["female"]
+    elif who == "males survived":
+        people = people.loc["male"]
 
+    return people
 
 def get_survivors_by_class(data: pd.DataFrame):
     """Retrieve information on survivors/dead based on passenger class.
