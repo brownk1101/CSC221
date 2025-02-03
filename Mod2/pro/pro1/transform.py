@@ -15,10 +15,9 @@ def get_survivors(data: pd.DataFrame, who: str = "both"):
 
     Returns
     -------
-    tuple
-        if who="both", returns a tuple of ((female_alive, female_dead),
-        (male_alive, male_dead))
-        Otherwise returns a tuple of (alive, dead)
+    pd.DataFrame
+        If who = "both", return female and male survivor/dead numbers, else
+        return either female or male.
     """
     people = data.groupby("gender")["survived"].value_counts().unstack()
     people.columns = ["dead", "survived"]
