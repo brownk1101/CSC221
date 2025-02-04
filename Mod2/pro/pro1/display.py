@@ -30,7 +30,7 @@ def records_amount(data: pd.DataFrame) -> None:
     print()
 
 
-def survivor_amounts(people, who: str = "all") -> None:
+def survivor_amounts(people: pd.DataFrame | pd.Series , who: str = "all") -> None:
     """Prints the amount of survivors vs dead for a given group of people.
 
     Parameters
@@ -44,14 +44,12 @@ def survivor_amounts(people, who: str = "all") -> None:
     print()
     match who:
         case "all":
-            survivors = people[0][0] + people[1][0]
-            dead = people[0][1] + people[1][1]
-            print(f"Survivors: {survivors}, Dead: {dead}")
+            print(f"Dead: {people.dead.sum():>7}")
+            print(f"Survived: {people.survived.sum()}")
         case "both":
-            print(f"Female Survivors: {people[0][0]}, Female Dead: {people[0][1]}")
-            print(f"Male Survivors: {people[1][0]}, Male Dead: {people[1][1]}")
+            print(people)
         case "females survived":
-            print(f"Female Survivors: {people[0]}, Female Dead: {people[1]}")
+            print(people)
         case "males survived":
-            print(f"Male Survivors: {people[0]}, Male Dead: {people[1]}")
+            print(people)
     print()
