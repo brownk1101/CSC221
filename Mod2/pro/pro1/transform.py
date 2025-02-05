@@ -47,6 +47,18 @@ def get_survivors_by_class(data: pd.DataFrame):
     return survival_counts
 
 def get_survivors_by_travel(data: pd.DataFrame):
+    """Retrieve information on survivors/dead based on passenger traveling status.
+
+    Prameters
+    ---------
+    data: pd.DataFrame
+        DataFrame to extract information from.
+
+    Returns
+    -------
+    pd.DataFrame
+        DataFrame containing survival statistics for passenger traveling status.
+    """
     survival_counts = data.groupby("Traveling Alone")["survived"].value_counts().unstack()
     survival_counts.columns = ["dead", "survived"]
     survival_counts.index = ["group", "alone"]

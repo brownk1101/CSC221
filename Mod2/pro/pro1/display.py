@@ -58,6 +58,13 @@ def survivor_amounts(people: pd.DataFrame | pd.Series , who: str = "all") -> Non
 
 
 def survivor_amounts_by_travel(people: pd.DataFrame | pd.Series) -> None:
+    """Prints information related to the statistics of people traveling alone vs in a group.
+
+    Parameters
+    ----------
+    people: pd.DataFrame | pd.Series
+        The survivor amounts to display.
+    """
     print()
     print("Passenger amounts:")
     print(people.sum(axis=1).to_string(dtype=False))
