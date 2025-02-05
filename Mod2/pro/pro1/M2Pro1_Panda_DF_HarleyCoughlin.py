@@ -37,21 +37,16 @@ def main():
             case 2:
                 display.records_amount(titanic)
             case 3:
-                try:
-                    survivors = transform.get_survivors(titanic)
-                    display.survivor_amounts(survivors)
-                except ValueError as v:
-                    print(v)
+                survivors = transform.get_survivors(titanic)
+                display.survivor_amounts(survivors)
             case 4:
                 menu.print_submenu_option4()
                 submenu_choice = menu.get_submenu_option4_choice()
-                try:
-                    # There shouldn't be an error here as validation occurs in
-                    # menu.
-                    survivors = transform.get_survivors(titanic, submenu_choice)
-                    display.survivor_amounts(survivors, submenu_choice)
-                except ValueError as v:
-                    print(v)
+                survivors = transform.get_survivors(titanic, submenu_choice)
+                display.survivor_amounts(survivors, submenu_choice)
+            case 5:
+                survivors = transform.get_survivors_by_class(titanic)
+                display.survivor_amounts(survivors, "class")
             case 8:
                 # TODO: Change this
                 print("Thanks for stopping by.")

@@ -35,7 +35,7 @@ def survivor_amounts(people: pd.DataFrame | pd.Series , who: str = "all") -> Non
 
     Parameters
     ----------
-    data: tuple[int, int] | tuple[tuple[int, int], tuple[int, int]]
+    people: pd.DataFrame | pd.Series
         The survivor amounts to display.
     who: str
         The group of passengers to print information about.
@@ -51,5 +51,7 @@ def survivor_amounts(people: pd.DataFrame | pd.Series , who: str = "all") -> Non
         case "females survived":
             print(people)
         case "males survived":
+            print(people)
+        case "class":
             print(people)
     print()
