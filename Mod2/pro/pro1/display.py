@@ -55,3 +55,20 @@ def survivor_amounts(people: pd.DataFrame | pd.Series , who: str = "all") -> Non
         case "class":
             print(people)
     print()
+
+
+def survivor_amounts_by_travel(people: pd.DataFrame | pd.Series) -> None:
+    print()
+    print("Passenger amounts:")
+    print(people.sum(axis=1).to_string(dtype=False))
+    print(f"{'':~^21}")
+
+    print("Survivorship by group:")
+    print(people)
+    print(f"{'':~^21}")
+
+    print("Percentage of survivors by group:")
+    passenger_totals = people.sum(axis=1)
+    passenger_percentages = (people["survived"] / passenger_totals  * 100).round(2)
+    print(passenger_percentages.to_string(dtype=False))
+    print()

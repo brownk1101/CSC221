@@ -47,6 +47,9 @@ def main():
             case 5:
                 survivors = transform.get_survivors_by_class(titanic)
                 display.survivor_amounts(survivors, "class")
+            case 6:
+                survivors = transform.get_survivors_by_travel(titanic)
+                display.survivor_amounts_by_travel(survivors)
             case 8:
                 # TODO: Change this
                 print("Thanks for stopping by.")

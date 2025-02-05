@@ -45,3 +45,9 @@ def get_survivors_by_class(data: pd.DataFrame):
     survival_counts = data.groupby("pclass")["survived"].value_counts().unstack()
     survival_counts.columns = ["dead", "survived"]
     return survival_counts
+
+def get_survivors_by_travel(data: pd.DataFrame):
+    survival_counts = data.groupby("Traveling Alone")["survived"].value_counts().unstack()
+    survival_counts.columns = ["dead", "survived"]
+    survival_counts.index = ["group", "alone"]
+    return survival_counts
