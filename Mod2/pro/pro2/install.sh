@@ -3,7 +3,6 @@
 
 # Create the virtual environment
 python3 -m venv .venv
-
 # Wait until its finished
 if [ $? -eq 0 ]; then
     echo "Virtual environment created successfully."
@@ -13,7 +12,7 @@ else
 fi
 
 # Enter the virtual environment
-source .env/bin/activate
+source .venv/bin/activate
 
 # Upgrade pip
 pip install --upgrade pip
