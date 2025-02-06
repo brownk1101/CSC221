@@ -60,8 +60,7 @@ def main():
                 survivors = transform.get_survivors_by_age(titanic)
                 display.survivor_amounts_by_age(survivors, submenu_choice)
             case 8:
-                # TODO: Change this
-                print("Thanks for stopping by.")
+                print("Thanks for using this program! Goodbye!")
 
 
 if __name__ == "__main__":
