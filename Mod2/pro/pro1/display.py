@@ -79,3 +79,20 @@ def survivor_amounts_by_travel(people: pd.DataFrame | pd.Series) -> None:
     passenger_percentages = (people["survived"] / passenger_totals  * 100).round(2)
     print(passenger_percentages.to_string(dtype=False))
     print()
+
+
+def survivor_amounts_by_age(people: pd.DataFrame | pd.Series, age_group: str) -> None:
+    """Prints information about the age groups of passengers
+
+    Parameters
+    ----------
+    people: pd.DataFrame | pd.Series
+        Passengers to display information about.
+    """
+    print()
+    if age_group == "all":
+        print(people)
+    else:
+        print(f"{age_group.title()}:")
+        print(people.loc[age_group].to_string(dtype=False))
+    print()

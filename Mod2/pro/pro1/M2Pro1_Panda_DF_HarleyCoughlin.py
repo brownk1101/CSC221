@@ -40,8 +40,10 @@ def main():
                 survivors = transform.get_survivors(titanic)
                 display.survivor_amounts(survivors)
             case 4:
-                menu.print_submenu_option4()
-                submenu_choice = menu.get_submenu_option4_choice()
+                header = "Option 4 submenu"
+                options = ("Females Survived", "Males Survived", "Both")
+                menu.print_submenu(header, options)
+                submenu_choice = menu.get_submenu_choice(options)
                 survivors = transform.get_survivors(titanic, submenu_choice)
                 display.survivor_amounts(survivors, submenu_choice)
             case 5:
@@ -50,6 +52,13 @@ def main():
             case 6:
                 survivors = transform.get_survivors_by_travel(titanic)
                 display.survivor_amounts_by_travel(survivors)
+            case 7:
+                header = "Option 7 submenu"
+                options = ("All", "Infant", "Child", "Teenager", "Young adult", "Adult", "Unknown")
+                menu.print_submenu(header, options)
+                submenu_choice = menu.get_submenu_choice(options)
+                survivors = transform.get_survivors_by_age(titanic)
+                display.survivor_amounts_by_age(survivors, submenu_choice)
             case 8:
                 # TODO: Change this
                 print("Thanks for stopping by.")
