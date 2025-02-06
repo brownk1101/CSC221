@@ -32,23 +32,36 @@ def get_menu_choice() -> int:
     return choice
 
 
-def print_submenu_option4():
-    """Print menu option 4 submenu."""
-    print()
-    print("Option 4 submenu")
-    print("Females Survived")
-    print("Males Survived")
-    print("Both")
+def print_submenu(header: str, options: tuple[str, ...]) -> None:
+    """Print formatted submenu.
 
-def get_submenu_option4_choice() -> str:
-    """Prompts user to enter string, validates against submenu options.
+    Parameters
+    ----------
+    header: str
+        Title for the menu.
+    options: tuple[str, ...]
+        Tuple of strings that contains: Header, opitions.
+    """
+    # Menu header
+    print(header)
+    # Menu options.
+    for i in range(len(options)):
+        print(options[i])
+
+
+def get_submenu_choice(choices: tuple[str, ...]) -> str:
+    """Prompts user to enter string, validates against submenu choices.
+
+    Parameters
+    ----------
+    choices: tuple[str, ...]
+        Tuple of strings with valid submenu choices.
     
     Returns
     -------
     choice: str
         Menu option entered by the user.
     """
-    choices = ["females survived", "males survived", "both"]
     choice = ""
 
     choice = input("Please type your choice: ")
