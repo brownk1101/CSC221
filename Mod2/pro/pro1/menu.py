@@ -42,6 +42,7 @@ def print_submenu(header: str, options: tuple[str, ...]) -> None:
     options: tuple[str, ...]
         Tuple of strings that contains: Header, opitions.
     """
+    print()
     # Menu header
     print(header)
     # Menu options.
@@ -65,10 +66,10 @@ def get_submenu_choice(choices: tuple[str, ...]) -> str:
     choice = ""
 
     choice = input("Please type your choice: ")
-    choice = choice.strip().lower()
+    choice = choice.strip().casefold()
 
-    while choice not in choices:
+    while choice not in [c.strip().casefold() for c in choices]:
         choice = input("Invalid: Please type your choice: ")
-        choice = choice.strip().lower()
+        choice = choice.strip().casefold()
 
     return choice
