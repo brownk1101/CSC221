@@ -63,3 +63,23 @@ def get_survivors_by_travel(data: pd.DataFrame):
     survival_counts.columns = ["dead", "survived"]
     survival_counts.index = ["group", "alone"]
     return survival_counts
+
+def get_survivors_by_age(data: pd.DataFrame):
+    """Retrieve information on survivors/dead based on passenger age.
+
+    Prameters
+    ---------
+    data: pd.DataFrame
+        DataFrame to extract information from.
+
+    Returns
+    -------
+    pd.DataFrame
+        DataFrame containing survival statistics for passenger traveling status.
+    """
+    survival_counts = data.groupby("Age Group")["survived"].value_counts().unstack()
+    survival_counts.columns = ["dead", "survived"]
+    age_group_order = ("infant", "child", "teenager", "young adult", "adult", "unknown")
+    survival_counts = survival_counts.rename(index={"Null": "unknown"})\
+                                     .reindex(age_group_order)
+    return survival_counts
