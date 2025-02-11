@@ -12,7 +12,7 @@ def print_main_menu() -> None:
 
 
 def get_main_menu_choice() -> int:
-    """Prompt user for main menu choice and validate against main menu.
+    """Prompt user for main menu choice and validate against main menu options
 
     Returns
     -------
@@ -28,3 +28,23 @@ def get_main_menu_choice() -> int:
             continue
 
     return choice
+
+
+def print_submenu(header: str, options: tuple[str]) -> None:
+    """Print formatted submenus
+
+    Parameters
+    ----------
+    header: str
+        Submenu header
+    options: tuple[str]
+        Submenu options
+    """
+    # Get the length of the longest option for formatting
+    max_length = max([len(op) for op in options])
+    if max_length < len(header):
+        max_length = len(header) + 2 
+
+    print(f"{header:-^{max_length}}")
+    for i, option in enumerate(options):
+        print(f"{i + 1}. {option}")
