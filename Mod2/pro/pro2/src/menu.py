@@ -1,7 +1,10 @@
 """Menu Functions"""
 
+from util import clear_screen
+
 def print_main_menu() -> None:
-    """Print the main menu"""
+    """Clear the screen, then print the main menu"""
+    clear_screen()
     print(f"{'Main Menu':-^35}")
     print("1. Enter \"Sec Divisions\" code")
     print("2. Get Course Enrollment Percentage")
@@ -30,21 +33,30 @@ def get_main_menu_choice() -> int:
     return choice
 
 
-def print_submenu(header: str, options: tuple[str]) -> None:
-    """Print formatted submenus
+def print_submenu(header: str, options) -> None:
+    """Clear the screen, then print formatted submenu
 
     Parameters
     ----------
     header: str
         Submenu header
-    options: tuple[str]
+    options: ArrayLike | Any | Unknown
         Submenu options
     """
-    # Get the length of the longest option for formatting
-    max_length = max([len(op) for op in options])
+    clear_screen()
+    # Get the amount of digits in the length of options (e.g. 15 = 2 digits).
+    length_digits = len(str(len(options)))
+    # Add 2 to account for the '. ' in the print loop.
+    length_formatting = length_digits + 2
+    # Get the length of the longest option for formatting.
+    max_length = max([len(op) + length_formatting for op in options])
     if max_length < len(header):
-        max_length = len(header) + 2 
+        max_length = len(header) + length_digits 
 
     print(f"{header:-^{max_length}}")
     for i, option in enumerate(options):
-        print(f"{i + 1}. {option}")
+        print(f"{i + 1:>{length_digits}}. {option}")
+
+
+def get_submenu_choice(options):
+    ...
