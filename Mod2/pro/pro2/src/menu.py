@@ -63,8 +63,8 @@ def get_submenu_choice(amount_options: int) -> int:
 
     Parameters
     ----------
-    options: list[str]
-        List of options.
+    amount_options: int
+        The amount of options presented to the end user.
 
     Returns
     -------
