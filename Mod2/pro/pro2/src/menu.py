@@ -33,7 +33,7 @@ def get_main_menu_choice() -> int:
     return choice
 
 
-def print_submenu(header: str, options: list[str]) -> None:
+def print_submenu(header: str, options: dict[int, str]) -> None:
     """Clear the screen, then print formatted submenu
 
     Parameters
@@ -49,7 +49,7 @@ def print_submenu(header: str, options: list[str]) -> None:
     # Add 2 to account for the '. ' in the print loop.
     length_formatting = length_digits + 2
     # Get the length of the longest option for formatting.
-    max_length = max([len(op) + length_formatting for op in options])
+    max_length = max([len(op) + length_formatting for _, op in options.items()])
     if max_length < len(header):
         max_length = len(header) + length_digits 
 
@@ -78,4 +78,5 @@ def get_submenu_choice(options: list[str]) -> int:
         except ValueError:
             # Ignoring anything other than a number in the correct range
             ...
-    return user_input
+    # Gotta remove the 1 added to the options when printed
+    return user_input - 1
