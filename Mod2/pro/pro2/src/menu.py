@@ -22,7 +22,7 @@ def get_main_menu_choice() -> int:
     int
         User's menu choice.
     """
-    choice: int = 0
+    choice = 0
     while choice < 1 or choice > 6:
         try:
             choice = int(input("Enter an option between 1 and 6: "))
@@ -33,14 +33,14 @@ def get_main_menu_choice() -> int:
     return choice
 
 
-def print_submenu(header: str, options) -> None:
+def print_submenu(header: str, options: list[str]) -> None:
     """Clear the screen, then print formatted submenu
 
     Parameters
     ----------
     header: str
         Submenu header
-    options: ArrayLike | Any | Unknown
+    options: list[str]
         Submenu options
     """
     clear_screen()
@@ -58,5 +58,24 @@ def print_submenu(header: str, options) -> None:
         print(f"{i + 1:>{length_digits}}. {option}")
 
 
-def get_submenu_choice(options):
-    ...
+def get_submenu_choice(options: list[str]) -> int:
+    """Prompts user for choice, validates, returns choice.
+
+    Parameters
+    ----------
+    options: list[str]
+        List of options.
+
+    Returns
+    -------
+    int
+        User choice
+    """
+    user_input = 0
+    while user_input not in range(1, len(options)):
+        try:
+            user_input = int(input(f"Enter a number between 1 and {len(options)}: "))
+        except ValueError:
+            # Ignoring anything other than a number in the correct range
+            ...
+    return user_input
