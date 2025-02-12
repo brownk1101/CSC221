@@ -52,8 +52,9 @@ def get_division_frame(data: pd.DataFrame, name: str | None):
         The division code to target.
     """
     # Get empty cells
-    if name is None:
-        frame = data[data["Sec Divisions"].isna() | data["Sec Divisions"] == ""]
+    if name is None or name == "No code":
+        frame = data[data["Sec Divisions"].isna() |
+                (data["Sec Divisions"] == "")]
     else:
         frame = data[data["Sec Divisions"] == name]
     return frame
