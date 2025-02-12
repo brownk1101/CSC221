@@ -12,9 +12,8 @@ def sort_dataframe(data: pd.DataFrame, sort_by: list[str] =
     ----------
     data: pd.DataFrame
         DataFrame to sort.
-    sort_by: list[str]
+    sort_by: list[str] (default = ["Sec Divisions", "Sec Name", "Sec Faculty Info"])
         Column name(s) to sort by.
-        Default = ["Sec Divisions", "Sec Name", "Sec Faculty Info"]
 
     Returns
     -------
