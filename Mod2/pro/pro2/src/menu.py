@@ -40,7 +40,7 @@ def print_submenu(header: str, options: dict[int, str]) -> None:
     ----------
     header: str
         Submenu header
-    options: list[str]
+    options: dict[int, str]
         Submenu options
     """
     clear_screen()
@@ -54,11 +54,11 @@ def print_submenu(header: str, options: dict[int, str]) -> None:
         max_length = len(header) + length_digits 
 
     print(f"{header:-^{max_length}}")
-    for i, option in enumerate(options):
-        print(f"{i + 1:>{length_digits}}. {option}")
+    for k, v in options.items():
+        print(f"{k + 1:>{length_digits}}. {v}")
 
 
-def get_submenu_choice(options: list[str]) -> int:
+def get_submenu_choice(amount_options: int) -> int:
     """Prompts user for choice, validates, returns choice.
 
     Parameters
@@ -72,9 +72,9 @@ def get_submenu_choice(options: list[str]) -> int:
         User choice
     """
     user_input = 0
-    while user_input not in range(1, len(options)):
+    while user_input not in range(1, amount_options + 1):
         try:
-            user_input = int(input(f"Enter a number between 1 and {len(options)}: "))
+            user_input = int(input(f"Enter a number between 1 and {amount_options}: "))
         except ValueError:
             # Ignoring anything other than a number in the correct range
             ...
