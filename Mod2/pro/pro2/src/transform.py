@@ -39,3 +39,21 @@ def get_division_codes(data: pd.DataFrame) -> list[str]:
     unique_values = data["Sec Divisions"].dropna().unique()
     # Explicit conversion to list[str] so my lsp will stop yelling at me.
     return [str(x) for x in unique_values]
+
+
+def get_division_frame(data: pd.DataFrame, name: str | None):
+    """Extracts all rows associated to a specific division code
+
+    Parameters
+    ----------
+    data: pd.DataFrame
+        DataFrame to extract rows from.
+    name: str
+        The division code to target.
+    """
+    # Get empty cells
+    if name is None:
+        frame = data[data["Sec Divisions"].isna() | data["Sec Divisions"] == ""]
+    else:
+        frame = data[data["Sec Divisions"] == name]
+    return frame
