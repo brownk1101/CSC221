@@ -23,20 +23,22 @@ def sort_dataframe(data: pd.DataFrame, sort_by: list[str] =
     return data.sort_values(by=sort_by)
 
 
-def get_division_codes(data: pd.DataFrame) -> list[str]:
-    """Extracts unique division codes from a DataFrame.
+def get_column_uniques(data: pd.DataFrame, name: str) -> list[str]:
+    """Extracts unique values from a column within a DataFrame.
 
     Parameters
     ----------
     data: pd.DataFrame
         DataFrame to read division codes from.
+    name: str
+        Name of the column to extract unique values.
 
     Returns
     -------
     list[str]
         List of unique division codes.
     """
-    unique_values = data["Sec Divisions"].dropna().unique()
+    unique_values = data[name].dropna().unique()
     # Explicit conversion to list[str] so my lsp will stop yelling at me.
     return [str(x) for x in unique_values]
 
@@ -57,4 +59,41 @@ def get_division_frame(data: pd.DataFrame, name: str | None):
                 (data["Sec Divisions"] == "")]
     else:
         frame = data[data["Sec Divisions"] == name]
+    return frame
+
+
+def get_course_frame(data: pd.DataFrame, name: str):
+    """Extracts rows associated with a course code, excluding rows for 
+    face-to-face sections that have INET in the meeting times column.
+
+    Parameters
+    ----------
+    data: pd.DataFrame
+        DataFrame to extract rows from.
+    name: str
+        Course code to filter for.
+
+    Returns:
+    pd.DataFrame
+        All rows associated to the Course Code without face-to-face classes
+        with INET meeting times.
+    """
+    columns_needed = ["Sec Name", "X Sec Delivery Method", "Meeting Times",
+                      "Capacity", "FTE Count", "Total FTE", "Sec Faculty Info"]
+    # Get Course rows
+    frame = data[data["Sec Name"].str.contains(name)]
+    # Get duplicated rows
+    duplicates = frame["Sec Name"].duplicated(keep=False)
+    # For rows that are duplicates, keep only the ones without INET
+    # For non-duplicates, keep them all
+    frame = frame[
+        (~duplicates) |
+        (duplicates & ~frame["Meeting Times"].str.contains("INET", na=False))
+    ]
+    # Select the columns from the frame
+    frame = frame[columns_needed]
+    # Calculate enrollment percentage
+    frame["Calculated Percentage"] = \
+    ((frame["FTE Count"] / frame["Capacity"]) * 100).round(1).astype(str)+"%"
+
     return frame
