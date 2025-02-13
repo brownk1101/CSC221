@@ -1,7 +1,6 @@
 """Module for creating excel sheets"""
 
 
-import pandas as pd
 import os.path
 
 
