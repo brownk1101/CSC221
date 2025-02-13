@@ -80,3 +80,37 @@ def get_submenu_choice(amount_options: int) -> int:
             ...
     # Gotta remove the 1 added to the options when printed
     return user_input - 1
+
+
+def submenu_option2(courses: set[str]) -> str | None:
+    """Clear the screen, prompt the user for input, validate, and return it.
+
+    Parameters
+    ----------
+    courses: list[str]
+        List of valid course codes.
+
+    Returns
+    -------
+    str
+        Course code entered by the user.
+    """
+    clear_screen()
+    print(f"{'Option 2':-^2}")
+
+    choice = ""
+    found = False
+    keep_going = True
+    while not found and keep_going:
+        choice = input("Enter course code(or Q to quit): ")
+        choice = choice.strip().upper()
+
+        if choice == 'Q':
+            keep_going = False
+            choice = None
+        elif choice in courses:
+            found = True
+        else:
+            print(f"{choice} not found, please check spelling.")
+
+    return choice

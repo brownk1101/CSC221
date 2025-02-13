@@ -46,6 +46,8 @@ def main():
         match option:
             case 1:
                 options.option1(df)
+            case 2:
+                options.option2(df)
             case 6:
                 print("Thanks for playing.")
                 keep_going = False
