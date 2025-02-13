@@ -1,6 +1,7 @@
 """Module containing program options."""
 
 
+import re
 import pandas as pd
 import load
 import menu
@@ -24,15 +25,15 @@ def print_option1_instructions() -> None:
 
 
 def option1(data: pd.DataFrame):
-    """Creates excel sheets from the DataFrame based on user input.
+    """Prompts user for division codes to create excel sheets.
 
     Parameters
     ----------
     data: pd.DataFrame
-        DataFrame to create excel sheets from
+        DataFrame to create excel sheets from.
     """
     print_option1_instructions()
-    unique_codes = transform.get_division_codes(data)
+    unique_codes = transform.get_column_uniques(data, "Sec Divisions")
     header = "Sec Divisions"
     options = { 0: "All" }
     for i, code in enumerate(unique_codes):
@@ -72,3 +73,32 @@ def option1(data: pd.DataFrame):
                 load.create_excel_sheets(frame, "no_division")
             else:
                 load.create_excel_sheets(frame, options[choice].casefold())
+
+
+def option2(data: pd.DataFrame) -> None:
+    """Prompts user for course name and then creates an excel sheet with
+       pertinent information for that course.
+
+    Parameters
+    ----------
+    data: pd.DataFrame
+        DataFrame to extract course information from.
+    """
+    # This get ALL of the variations of each course, all the sections we
+    # don't need.
+    courses = transform.get_column_uniques(data, "Sec Name")
+    # We cut it down to just the unique courses here
+    course_code_pattern = r"^([A-Z]{3}-\d{3}[A-Z]?)"
+    course_codes: set[str] = set()
+    for code in courses:
+        course_code = re.match(course_code_pattern, code)
+        if course_code is not None:
+            course_codes.add(course_code[1])
+
+    choice = menu.submenu_option2(course_codes)
+    if choice is not None:
+        frame = transform.get_course_frame(data, choice)
+
+        choice = choice.split("-")
+        choice = choice[0].lower() + choice[1] + "_per"
+        load.create_excel_sheets(frame, choice)
