@@ -29,14 +29,14 @@ def get_column_uniques(data: pd.DataFrame, name: str) -> list[str]:
     Parameters
     ----------
     data: pd.DataFrame
-        DataFrame to read division codes from.
+        DataFrame to read from.
     name: str
         Name of the column to extract unique values.
 
     Returns
     -------
     list[str]
-        List of unique division codes.
+        List of unique values.
     """
     unique_values = data[name].dropna().unique()
     # Explicit conversion to list[str] so my lsp will stop yelling at me.
