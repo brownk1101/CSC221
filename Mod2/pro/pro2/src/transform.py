@@ -106,6 +106,7 @@ def get_course_frame(data: pd.DataFrame, name: str):
                       "Capacity", "FTE Count", "Total FTE", "Sec Faculty Info"]
     # Get Course rows
     frame = data[data["Sec Name"].str.contains(name)]
+    frame = pd.DataFrame(frame) # Ensure data type is DataFrame
     # Get duplicated rows
     duplicates = frame["Sec Name"].duplicated(keep=False)
     # For rows that are duplicates, keep only the ones without INET
@@ -116,8 +117,5 @@ def get_course_frame(data: pd.DataFrame, name: str):
     ]
     # Select the columns from the frame
     frame = frame[columns_needed]
-    # Calculate enrollment percentage
-    frame["Calculated Percentage"] = \
-    ((frame["FTE Count"] / frame["Capacity"]) * 100).round(1).astype(str)+"%"
 
     return frame
