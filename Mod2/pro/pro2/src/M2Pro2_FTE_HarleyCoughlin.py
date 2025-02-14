@@ -48,6 +48,8 @@ def main():
                 options.option1(df)
             case 2:
                 options.option2(df)
+            case 3:
+                options.option3(df)
             case 6:
                 print("Thanks for playing.")
                 keep_going = False

@@ -88,17 +88,56 @@ def option2(data: pd.DataFrame) -> None:
     # don't need.
     courses = transform.get_column_uniques(data, "Sec Name")
     # We cut it down to just the unique courses here
-    course_code_pattern = r"^([A-Z]{3}-\d{3}[A-Z]?)"
-    course_codes: set[str] = set()
-    for code in courses:
-        course_code = re.match(course_code_pattern, code)
-        if course_code is not None:
-            course_codes.add(course_code[1])
+    course_codes = transform.get_course_codes(courses)
 
     choice = menu.submenu_option2(course_codes)
     if choice is not None:
         frame = transform.get_course_frame(data, choice)
 
+        # Calculate enrollment percentage
+        frame["Calculated Percentage"] = \
+        ((frame["FTE Count"] / frame["Capacity"]) * 100).round(1).astype(str)+"%"
+
         choice = choice.split("-")
         choice = choice[0].lower() + choice[1] + "_per"
         load.create_excel_sheets(frame, choice)
+
+
+def option3(data: pd.DataFrame) -> None:
+    """Prompts user for division code and then creates an excel sheet with
+       FTE information for the courses within that division
+
+    Parameters
+    ----------
+    data: pd.DataFrame
+        DataFrame to extract information from
+    """
+    unique_divisions = transform.get_column_uniques(data, "Sec Divisions")
+    header = "Sec Divisions"
+    options: dict[int, str] = {}
+    for i, division in enumerate(unique_divisions):
+        options[i] = division
+    options[len(options)] = "No code"
+    options[len(options)] = "Return to Main Menu"
+    menu.print_submenu(header, options)
+
+    # Get the division
+    choice = menu.get_submenu_choice(len(options))
+    division_frame = transform.get_division_frame(data, options[choice])
+
+    # Filter for the necessary columns
+    columns_needed = ["Sec Name", "X Sec Delivery Method", "Meeting Times",
+                      "Capacity", "FTE Count", "Total FTE", "Sec Faculty Info"]
+    division_frame = division_frame[columns_needed]
+    division_frame = pd.DataFrame(division_frame) # To convince my linter that this is in fact a dataframe
+
+    #Get the courses in the division
+    courses = transform.get_column_uniques(division_frame, "Sec Name")
+    course_codes = sorted(transform.get_course_codes(courses))
+
+    headers = columns_needed
+    headers.insert(0, options[choice])
+    headers.insert(1, "Course Code")
+    headers.append("Generated FTE")
+
+    load.create_option3_sheet(division_frame, options[choice], course_codes, headers)

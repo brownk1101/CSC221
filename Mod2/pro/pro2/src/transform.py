@@ -117,5 +117,6 @@ def get_course_frame(data: pd.DataFrame, name: str):
     ]
     # Select the columns from the frame
     frame = frame[columns_needed]
+    frame = pd.DataFrame(frame) # Ensure data type is DataFrame
 
     return frame
