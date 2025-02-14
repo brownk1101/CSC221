@@ -44,30 +44,7 @@ def get_column_uniques(data: pd.DataFrame, name: str) -> list[str]:
     return [str(x) for x in unique_values]
 
 
-def get_course_codes(courses: list[str]) -> set[str]:
-    """Cuts the section portion out of course codes.
-
-    Parameters
-    ----------
-    courses: list[str]
-        List of courses with sections.
-
-    Returns
-    -------
-    set[str]
-        Set of course codes without sections.
-    """
-    course_code_pattern = r"^([A-Z]{3}-\d{3}[A-Z]?)"
-    course_codes: set[str] = set()
-    for code in courses:
-        course_code = re.match(course_code_pattern, code)
-        if course_code is not None:
-            course_codes.add(course_code[1])
-
-    return course_codes
-
-
-def get_division_frame(data: pd.DataFrame, name: str | None):
+def get_division_frame(data: pd.DataFrame, name: str | None) -> pd.DataFrame:
     """Extracts all rows associated to a specific division code
 
     Parameters
@@ -87,7 +64,7 @@ def get_division_frame(data: pd.DataFrame, name: str | None):
     return frame
 
 
-def get_course_frame(data: pd.DataFrame, name: str):
+def get_course_frame(data: pd.DataFrame, name: str) -> pd.DataFrame:
     """Extracts rows associated with a course code, excluding rows for 
     face-to-face sections that have INET in the meeting times column.
 
