@@ -22,43 +22,57 @@ def create_excel_sheets(data: pd.DataFrame, name: str) -> None:
     data.to_excel(excel_writer=file_path)
 
 
-def create_option3_sheet(data: pd.DataFrame, division_name: str,
-                         course_codes: list[str], headers: list[str]) -> None:
-    """Writes a formatted excel file
+def create_fte_excel(data: pd.DataFrame, name: str, course_codes: list[str],
+                           first_cell: str | None = None ) -> None:
+    """Writes a formatted FTE excel file to resources/output/{name}_FTE.xlsx
 
     Parameters
     ----------
     data: pd.DataFrame
         Division dataframe.
-    division_name: str
-        Name of the division.
+    name: str
+        Name of the excel file.
     course_codes: list[str]
         List of unique course codes without section information.
-    headers: list[str]
-        List of headers to be printed in the first row.
+    first_cell: str | None (default = None)
+        If not None, the value will be written to the first cell of the sheet.
     """
-    file_name = division_name.lower() + "_FTE" + ".xlsx"
+    filename = name.lower() + "_FTE" + ".xlsx"
     file_path = os.path.join("resources", "output")
-    file_path = os.path.join(file_path, file_name)
+    file_path = os.path.join(file_path, filename)
+
+    current_row = 0
+    start_column = 1 if first_cell is None else 2
 
     with xlsxwriter.Workbook(file_path) as workbook:
         worksheet = workbook.add_worksheet()
-        # Write the header current_row
-        worksheet.write_row(0, 0, headers)
+        # Write the header row.
+        if first_cell is not None:
+            worksheet.write(current_row, 0, first_cell)
+            worksheet.write(current_row, 1, "Course Code")
+            worksheet.write_row(0, start_column, data.columns)
+        else:
+            worksheet.write(current_row, 0, "Course Code")
+            worksheet.write_row(0, start_column, data.columns)
 
-        # Keep track of the current_row that we're on
-        current_row = 1
-
+        current_row += 1
+        # Write the course information.
         for course in course_codes:
             course_info = transform.get_course_frame(data, course)
-            worksheet.write(current_row, 1, course)
+            # Write the course name to the cell in the column/row before the
+            # course information.
+            worksheet.write(current_row, start_column - 1, course)
             current_row += 1
+            # Write the course information.
             for row in course_info.itertuples(index=False):
-                worksheet.write_row(current_row, 2, row)
+                worksheet.write_row(current_row, start_column, row)
                 current_row += 1
-            worksheet.write(current_row, 1, "Total")
+            # Write total.
+            worksheet.write(current_row, start_column - 1, "Total")
             current_row += 1
 
-        worksheet.write(current_row, 1, "Div Total")
-        # Try to fit the columns to the widest data available in each column
+        # Write div total for division, instructor
+        if first_cell is not None:
+            worksheet.write(current_row, 1, "Div Total")
+        # Try to fit the columns to the data.
         worksheet.autofit()
