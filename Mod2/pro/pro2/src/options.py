@@ -1,11 +1,11 @@
 """Module containing program options."""
 
 
-import re
 import pandas as pd
 import load
 import menu
 import transform
+import util
 
 
 def print_option1_instructions() -> None:
@@ -88,7 +88,7 @@ def option2(data: pd.DataFrame) -> None:
     # don't need.
     courses = transform.get_column_uniques(data, "Sec Name")
     # We cut it down to just the unique courses here
-    course_codes = transform.get_course_codes(courses)
+    course_codes = util.get_course_codes(courses)
 
     choice = menu.submenu_option2(course_codes)
     if choice is not None:
@@ -133,7 +133,7 @@ def option3(data: pd.DataFrame) -> None:
 
     #Get the courses in the division
     courses = transform.get_column_uniques(division_frame, "Sec Name")
-    course_codes = sorted(transform.get_course_codes(courses))
+    course_codes = sorted(util.get_course_codes(courses))
 
     headers = columns_needed
     headers.insert(0, options[choice])
