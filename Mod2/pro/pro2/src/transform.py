@@ -1,6 +1,7 @@
 """Data transformations"""
 
 import pandas as pd
+import re
 
 
 def sort_dataframe(data: pd.DataFrame, sort_by: list[str] =
@@ -41,6 +42,29 @@ def get_column_uniques(data: pd.DataFrame, name: str) -> list[str]:
     unique_values = data[name].dropna().unique()
     # Explicit conversion to list[str] so my lsp will stop yelling at me.
     return [str(x) for x in unique_values]
+
+
+def get_course_codes(courses: list[str]) -> set[str]:
+    """Cuts the section portion out of course codes.
+
+    Parameters
+    ----------
+    courses: list[str]
+        List of courses with sections.
+
+    Returns
+    -------
+    set[str]
+        Set of course codes without sections.
+    """
+    course_code_pattern = r"^([A-Z]{3}-\d{3}[A-Z]?)"
+    course_codes: set[str] = set()
+    for code in courses:
+        course_code = re.match(course_code_pattern, code)
+        if course_code is not None:
+            course_codes.add(course_code[1])
+
+    return course_codes
 
 
 def get_division_frame(data: pd.DataFrame, name: str | None):
