@@ -75,7 +75,7 @@ def option1(data: pd.DataFrame):
                 load.create_excel_sheets(frame, options[choice].casefold())
 
 
-def option2(data: pd.DataFrame) -> None:
+def course_enrollment_percentage(data: pd.DataFrame) -> None:
     """Prompts user for course name and then creates an excel sheet with
        pertinent information for that course.
 
@@ -103,7 +103,7 @@ def option2(data: pd.DataFrame) -> None:
         load.create_excel_sheets(frame, choice)
 
 
-def option3(data: pd.DataFrame) -> None:
+def fte_per_division(data: pd.DataFrame) -> None:
     """Prompts user for division code and then creates an excel sheet with
        FTE information for the courses within that division
 
@@ -129,15 +129,12 @@ def option3(data: pd.DataFrame) -> None:
     columns_needed = ["Sec Name", "X Sec Delivery Method", "Meeting Times",
                       "Capacity", "FTE Count", "Total FTE", "Sec Faculty Info"]
     division_frame = division_frame[columns_needed]
+    division_frame["Generated FTE"] = None
     division_frame = pd.DataFrame(division_frame) # To convince my linter that this is in fact a dataframe
 
     #Get the courses in the division
     courses = transform.get_column_uniques(division_frame, "Sec Name")
     course_codes = sorted(util.get_course_codes(courses))
 
-    headers = columns_needed
-    headers.insert(0, options[choice])
-    headers.insert(1, "Course Code")
-    headers.append("Generated FTE")
-
-    load.create_option3_sheet(division_frame, options[choice], course_codes, headers)
+    load.create_fte_excel(data=division_frame, name=options[choice],
+                          course_codes=course_codes, first_cell=options[choice])

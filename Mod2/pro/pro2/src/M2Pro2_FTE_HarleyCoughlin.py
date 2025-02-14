@@ -47,9 +47,9 @@ def main():
             case 1:
                 options.option1(df)
             case 2:
-                options.option2(df)
+                options.course_enrollment_percentage(df)
             case 3:
-                options.option3(df)
+                options.fte_per_division(df)
             case 6:
                 print("Thanks for playing.")
                 keep_going = False
