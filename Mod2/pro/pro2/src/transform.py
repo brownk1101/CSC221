@@ -83,6 +83,7 @@ def get_division_frame(data: pd.DataFrame, name: str | None):
                 (data["Sec Divisions"] == "")]
     else:
         frame = data[data["Sec Divisions"] == name]
+    frame = pd.DataFrame(frame)
     return frame
 
 
