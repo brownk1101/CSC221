@@ -113,7 +113,7 @@ def fte_per_division(data: pd.DataFrame) -> None:
         DataFrame to extract information from
     """
     unique_divisions = transform.get_column_uniques(data, "Sec Divisions")
-    header = "Sec Divisions"
+    header = "FTE by Division"
     options: dict[int, str] = {}
     for i, division in enumerate(unique_divisions):
         options[i] = division
@@ -130,11 +130,45 @@ def fte_per_division(data: pd.DataFrame) -> None:
                       "Capacity", "FTE Count", "Total FTE", "Sec Faculty Info"]
     division_frame = division_frame[columns_needed]
     division_frame["Generated FTE"] = None
-    division_frame = pd.DataFrame(division_frame) # To convince my linter that this is in fact a dataframe
+    division_frame = pd.DataFrame(division_frame) # Ensure dataframe type
 
-    #Get the courses in the division
+    # Get the courses in the division
     courses = transform.get_column_uniques(division_frame, "Sec Name")
     course_codes = sorted(util.get_course_codes(courses))
 
     load.create_fte_excel(data=division_frame, name=options[choice],
                           course_codes=course_codes, first_cell=options[choice])
+
+
+def fte_per_faculty(data: pd.DataFrame) -> None:
+    """Prompts user for faculty name and then creates an excel sheet with
+       FTE information for the courses for that faculty member
+
+    Parameters
+    ----------
+    data: pd.DataFrame
+        DataFrame to extract information from
+    """
+    unique_faculty = transform.get_column_uniques(data, "Sec Faculty Info")
+    faculty_member = menu.fte_faculty_submenu(unique_faculty)
+    if faculty_member is not None:
+        faculty_frame = transform.get_faculty_frame(data, faculty_member)
+        # Filter columns
+        columns_needed = ["Sec Name", "X Sec Delivery Method", "Meeting Times",
+                        "Capacity", "FTE Count", "Total FTE"]
+        faculty_frame = faculty_frame[columns_needed]
+        faculty_frame["Generated FTE"] = None
+        faculty_frame = pd.DataFrame(faculty_frame) # Ensure dataframe type
+
+        # Get the Courses for the faculty member
+        courses = transform.get_column_uniques(faculty_frame, "Sec Name")
+        course_codes = sorted(util.get_course_codes(courses))
+
+        # Get the last name and first initial for the filename
+        file_name = faculty_member.split()[1] + faculty_member[0]
+        load.create_fte_excel(data=faculty_frame, name=file_name,
+                              course_codes=course_codes,
+                              first_cell=faculty_member)
+    else:
+        print("No faculty member selected")
+        input("Press enter to continue")

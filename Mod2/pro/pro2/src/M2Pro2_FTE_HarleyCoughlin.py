@@ -50,6 +50,8 @@ def main():
                 options.course_enrollment_percentage(df)
             case 3:
                 options.fte_per_division(df)
+            case 4:
+                options.fte_per_faculty(df)
             case 6:
                 print("Thanks for playing.")
                 keep_going = False
