@@ -148,11 +148,11 @@ def fte_faculty_submenu(faculty: list[str]) -> None | str:
             found = True
         elif found_name is None:
             found_name = find_faculty(choice, faculty)
-            options: dict[int, str] = {}
             if isinstance(found_name, list):
                 # If we found more than one name, prompt the user to choose
                 # one of them or to search for a new name.
                 if len(found_name) > 1:
+                    options: dict[int, str] = {}
                     # Convert to a dict
                     for i, name in enumerate(found_name):
                         options[i] = name
