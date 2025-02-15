@@ -90,7 +90,7 @@ def course_enrollment_percentage(data: pd.DataFrame) -> None:
     # We cut it down to just the unique courses here
     course_codes = util.get_course_codes(courses)
 
-    choice = menu.submenu_option2(course_codes)
+    choice = menu.submenu_course_code(course_codes)
     if choice is not None:
         frame = transform.get_course_frame(data, choice)
 
@@ -172,3 +172,20 @@ def fte_per_faculty(data: pd.DataFrame) -> None:
     else:
         print("No faculty member selected")
         input("Press enter to continue")
+
+
+def fte_per_course(data: pd.DataFrame) -> None:
+    """Prompts user for course name and then creates an excel sheet with FTE
+       information for all sections for that course
+
+    Parameters
+    ----------
+    data: pd.DataFrame
+        DataFrame to extract information from.
+    """
+    courses = transform.get_column_uniques(data, "Sec Name")
+    course_codes = util.get_course_codes(courses)
+    choice = menu.submenu_course_code(course_codes)
+    if choice is not None:
+        load.create_fte_excel(data=data, name=choice,
+                              course_codes=[choice], filter=False)

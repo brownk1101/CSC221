@@ -52,6 +52,8 @@ def main():
                 options.fte_per_division(df)
             case 4:
                 options.fte_per_faculty(df)
+            case 5:
+                options.fte_per_course(df)
             case 6:
                 print("Thanks for playing.")
                 keep_going = False

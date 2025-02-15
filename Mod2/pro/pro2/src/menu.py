@@ -82,7 +82,7 @@ def get_submenu_choice(amount_options: int) -> int:
     return user_input - 1
 
 
-def submenu_option2(courses: set[str]) -> str | None:
+def submenu_course_code(courses: set[str]) -> str | None:
     """Clear the screen, prompt the user for input, validate, and return it.
 
     Parameters
@@ -96,7 +96,7 @@ def submenu_option2(courses: set[str]) -> str | None:
         Course code entered by the user.
     """
     clear_screen()
-    print(f"{'Course Enrollment':-^2}")
+    print(f"{'Course Code':-^2}")
 
     choice = ""
     found = False

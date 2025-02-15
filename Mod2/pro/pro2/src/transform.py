@@ -63,9 +63,8 @@ def get_division_frame(data: pd.DataFrame, name: str | None) -> pd.DataFrame:
     return frame
 
 
-def get_course_frame(data: pd.DataFrame, name: str) -> pd.DataFrame:
-    """Extracts rows associated with a course code, excluding rows for 
-    face-to-face sections that have INET in the meeting times column.
+def get_course_frame(data: pd.DataFrame, name: str, filter: bool = True) -> pd.DataFrame:
+    """Extracts rows associated with a course code
 
     Parameters
     ----------
@@ -73,24 +72,28 @@ def get_course_frame(data: pd.DataFrame, name: str) -> pd.DataFrame:
         DataFrame to extract rows from.
     name: str
         Course code to filter for.
+    filter: bool (default = True)
+        If true, face-to-face courses will be filtered
 
-    Returns:
+    Returns
+    -------
     pd.DataFrame
         All rows associated to the Course Code without face-to-face classes
-        with INET meeting times.
+        with INET meeting times if filtered, else all rows.
     """
     # Get the course rows, ensure type is DataFrame.
     frame = data[data["Sec Name"].str.contains(name)]
     frame = pd.DataFrame(frame)
-    # Get all the face-to-face sections.
-    zero_sections = frame["Sec Name"].str.contains(r"-\d0\d\d")
-    zero_frame = frame[zero_sections]
-    # Group them together and take only the first record for each group.
-    zero_frame = zero_frame.groupby("Sec Name", as_index=False).first()
-    # Get all the other sections.
-    non_zero_frame = frame[~zero_sections]
-    # Put both frames together and ensure DataFrame type.
-    frame = pd.DataFrame(pd.concat([zero_frame, non_zero_frame]))
+    if filter:
+        # Get all the face-to-face sections.
+        zero_sections = frame["Sec Name"].str.contains(r"-\d0\d\d")
+        zero_frame = frame[zero_sections]
+        # Group them together and take only the first record for each group.
+        zero_frame = zero_frame.groupby("Sec Name", as_index=False).first()
+        # Get all the other sections.
+        non_zero_frame = frame[~zero_sections]
+        # Put both frames together and ensure DataFrame type.
+        frame = pd.DataFrame(pd.concat([zero_frame, non_zero_frame]))
 
     return frame
 
