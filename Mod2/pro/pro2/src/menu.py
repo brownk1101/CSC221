@@ -1,6 +1,6 @@
 """Menu Functions"""
 
-from util import clear_screen
+from util import clear_screen, find_faculty
 
 def print_main_menu() -> None:
     """Clear the screen, then print the main menu"""
@@ -96,7 +96,7 @@ def submenu_option2(courses: set[str]) -> str | None:
         Course code entered by the user.
     """
     clear_screen()
-    print(f"{'Option 2':-^2}")
+    print(f"{'Course Enrollment':-^2}")
 
     choice = ""
     found = False
@@ -114,3 +114,62 @@ def submenu_option2(courses: set[str]) -> str | None:
             print(f"{choice} not found, please check spelling.")
 
     return choice
+
+
+def fte_faculty_submenu(faculty: list[str]) -> None | str:
+    """Clear the screen, prompt the user for input, validate, and return it.
+
+    Parameters
+    ----------
+    courses: list[str]
+        List of valid course codes.
+
+    Returns
+    -------
+    str
+        The faculty member name.
+    """
+    choice = ""
+    found = False
+    keep_going = True
+    found_name = None
+    while not found and keep_going:
+        clear_screen()
+        print(f"{'FTE by Faculty':-^2}")
+        print("Enter the first and/or last name of a faculty member,")
+        print("or TBA for classes with no announced faculty.")
+        choice = input("(Q to quit): ")
+        choice = choice.strip().title()
+
+        if choice == 'Q':
+            keep_going = False
+        elif choice == "Tba":
+            found_name = "To Be Announced"
+            found = True
+        elif found_name is None:
+            found_name = find_faculty(choice, faculty)
+            options: dict[int, str] = {}
+            if isinstance(found_name, list):
+                # If we found more than one name, prompt the user to choose
+                # one of them or to search for a new name.
+                if len(found_name) > 1:
+                    # Convert to a dict
+                    for i, name in enumerate(found_name):
+                        options[i] = name
+                    options[len(options)] = "None of these"
+                    # Present found options to user
+                    print_submenu("Did you mean", options)
+                    name_choice = get_submenu_choice(len(options))
+                    if name_choice == len(options) - 1:
+                        found_name = None
+                    else:
+                        found_name = options[name_choice]
+                # If we find only one name, send it.
+                else:
+                    found_name = found_name[0]
+                    found = True
+        else:
+            print(f"{choice} could not be found, please check spelling")
+            print()
+
+    return found_name
