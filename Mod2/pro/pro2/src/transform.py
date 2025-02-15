@@ -1,7 +1,6 @@
 """Data transformations"""
 
 import pandas as pd
-import re
 
 
 def sort_dataframe(data: pd.DataFrame, sort_by: list[str] =
@@ -80,8 +79,6 @@ def get_course_frame(data: pd.DataFrame, name: str) -> pd.DataFrame:
         All rows associated to the Course Code without face-to-face classes
         with INET meeting times.
     """
-    columns_needed = ["Sec Name", "X Sec Delivery Method", "Meeting Times",
-                      "Capacity", "FTE Count", "Total FTE", "Sec Faculty Info"]
     # Get Course rows
     frame = data[data["Sec Name"].str.contains(name)]
     frame = pd.DataFrame(frame) # Ensure data type is DataFrame
@@ -93,8 +90,6 @@ def get_course_frame(data: pd.DataFrame, name: str) -> pd.DataFrame:
         (~duplicates) |
         (duplicates & ~frame["Meeting Times"].str.contains("INET", na=False))
     ]
-    # Select the columns from the frame
-    frame = frame[columns_needed]
     frame = pd.DataFrame(frame) # Ensure data type is DataFrame
 
     return frame
@@ -116,12 +111,8 @@ def get_faculty_frame(data: pd.DataFrame, name: str) -> pd.DataFrame:
     pd.DataFrame
         All rows associated to the given faculty member of no faculty member.
     """
-    columns_needed = ["Sec Name", "X Sec Delivery Method", "Meeting Times",
-                      "Capacity", "FTE Count", "Total FTE"]
     # Get faculty rows
     frame = data[data["Sec Faculty Info"] == name]
-    # Filter columns
-    frame = frame[columns_needed]
     frame = pd.DataFrame(frame) # Ensure type is DataFrame
 
     return frame
