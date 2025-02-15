@@ -31,3 +31,42 @@ def get_course_codes(courses: list[str]) -> set[str]:
             course_codes.add(course_code[1])
 
     return course_codes
+
+
+def find_faculty(search_for: str, to_search: list[str]) -> None | list[str]:
+    """Searches faculty names for a match and returns None or the name in a list
+
+    Parameters
+    ----------
+    search_for: str
+        The name to search for.
+    to_search: list[str]
+        The names to search.
+
+    Returns
+    -------
+    None | list[str]
+        If not found returns None. Else, returns a list of all matches.
+    """
+    # Search for a full match
+    name = [name for name in to_search if search_for == name]
+    # Failing finding a match, try to split user input
+    try:
+        # If user entered first and last names, get the last name and check
+        # against the last names from the list.
+        if len(name) == 0:
+            name = [name for name in to_search if search_for.split()[1] == name.split()[1]]
+    except IndexError:
+        # If the user only entered first or last name, try them against the
+        # last names of the list.
+        name = [name for name in to_search if search_for == name.split()[1]]
+        ...
+    # Failing matching the last name, take the first initial of user input
+    # and try to match it against the first initial from the list.
+    if len(name) == 0:
+        name = [name for name in to_search if search_for[0] == name[0]]
+    # If we didn't find any matches at all, return None
+    if len(name) == 0:
+        name = None
+
+    return name
