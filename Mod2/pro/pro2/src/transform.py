@@ -98,3 +98,30 @@ def get_course_frame(data: pd.DataFrame, name: str) -> pd.DataFrame:
     frame = pd.DataFrame(frame) # Ensure data type is DataFrame
 
     return frame
+
+
+def get_faculty_frame(data: pd.DataFrame, name: str) -> pd.DataFrame:
+    """Extracts rows associated with a faculty member or ones not assigned yet.
+
+    Parameters
+    ----------
+    data: pd.DataFrame
+        DataFrame to extract rows from
+    name: str
+        Faculty name to filter for. 'To be Announced' if looking for unassigned
+        courses.
+
+    Returns
+    -------
+    pd.DataFrame
+        All rows associated to the given faculty member of no faculty member.
+    """
+    columns_needed = ["Sec Name", "X Sec Delivery Method", "Meeting Times",
+                      "Capacity", "FTE Count", "Total FTE"]
+    # Get faculty rows
+    frame = data[data["Sec Faculty Info"] == name]
+    # Filter columns
+    frame = frame[columns_needed]
+    frame = pd.DataFrame(frame) # Ensure type is DataFrame
+
+    return frame

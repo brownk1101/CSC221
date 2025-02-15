@@ -144,7 +144,7 @@ def fte_faculty_submenu(faculty: list[str]) -> None | str:
         if choice == 'Q':
             keep_going = False
         elif choice == "Tba":
-            found_name = "To Be Announced"
+            found_name = "To be Announced"
             found = True
         elif found_name is None:
             found_name = find_faculty(choice, faculty)
