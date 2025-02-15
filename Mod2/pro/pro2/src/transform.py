@@ -79,18 +79,18 @@ def get_course_frame(data: pd.DataFrame, name: str) -> pd.DataFrame:
         All rows associated to the Course Code without face-to-face classes
         with INET meeting times.
     """
-    # Get Course rows
+    # Get the course rows, ensure type is DataFrame.
     frame = data[data["Sec Name"].str.contains(name)]
-    frame = pd.DataFrame(frame) # Ensure data type is DataFrame
-    # Get duplicated rows
-    duplicates = frame["Sec Name"].duplicated(keep=False)
-    # For rows that are duplicates, keep only the ones without INET
-    # For non-duplicates, keep them all
-    frame = frame[
-        (~duplicates) |
-        (duplicates & ~frame["Meeting Times"].str.contains("INET", na=False))
-    ]
-    frame = pd.DataFrame(frame) # Ensure data type is DataFrame
+    frame = pd.DataFrame(frame)
+    # Get all the face-to-face sections.
+    zero_sections = frame["Sec Name"].str.contains(r"-\d0\d\d")
+    zero_frame = frame[zero_sections]
+    # Group them together and take only the first record for each group.
+    zero_frame = zero_frame.groupby("Sec Name", as_index=False).first()
+    # Get all the other sections.
+    non_zero_frame = frame[~zero_sections]
+    # Put both frames together and ensure DataFrame type.
+    frame = pd.DataFrame(pd.concat([zero_frame, non_zero_frame]))
 
     return frame
 
