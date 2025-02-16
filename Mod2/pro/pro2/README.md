@@ -19,7 +19,3 @@ or run the install script:
 
 ## Run
 `python3 M2Pro2_FTE_HarleyCoughlin.py`
-
-
-## Test
-`python3 -m unittest test/*.py` where * is the test suite that you want to run
