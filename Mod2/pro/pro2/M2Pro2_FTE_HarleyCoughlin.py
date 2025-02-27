@@ -23,7 +23,7 @@ def main():
         df = extract.extract_csv(filename=filename)
     except FileNotFoundError as e:
         print(f"""Unable to find the {filename}. Please make sure it exists in
-                the results/input directory.""")
+                the current directory.""")
         print(f"Technical details: {e}")
         error = True
     except pd.errors.EmptyDataError as e:
@@ -43,23 +43,22 @@ def main():
     while not error and keep_going:
         menu.print_main_menu()
         option = menu.get_main_menu_choice()
-        match option:
-            case 1:
-                options.option1(df)
-            case 2:
-                options.course_enrollment_percentage(df)
-            case 3:
-                options.fte_per_division(df)
-            case 4:
-                options.fte_per_faculty(df)
-            case 5:
-                options.fte_per_course(df)
-            case 6:
-                print("Thanks for playing.")
-                keep_going = False
-            case _:
-                print("You shouldn't be here.")
-                keep_going = False
+        if option == 1:
+            options.option1(df)
+        elif option == 2:
+            options.course_enrollment_percentage(df)
+        elif option == 3:
+            options.fte_per_division(df)
+        elif option == 4:
+            options.fte_per_faculty(df)
+        elif option == 5:
+            options.fte_per_course(df)
+        elif option == 6:
+            print("Thanks for playing.")
+            keep_going = False
+        else:
+            print("You shouldn't be here.")
+            keep_going = False
 
 
 if __name__ == "__main__":

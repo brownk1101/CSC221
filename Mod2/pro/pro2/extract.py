@@ -4,7 +4,7 @@ import os.path
 import pandas as pd
 
 
-def extract_csv(filename: str) -> pd.DataFrame:
+def extract_csv(filename):
     """Load CSV file into a Pandas DataFrame
 
     Parameters
@@ -24,8 +24,7 @@ def extract_csv(filename: str) -> pd.DataFrame:
     data = pd.DataFrame()
     file_path = ""
     try:
-        input_dir = os.path.join('resources', 'input')
-        file_path = os.path.join(input_dir, filename)
+        file_path = os.path.join(os.getcwd(), filename)
         data = pd.read_csv(file_path)
     except FileNotFoundError:
         raise FileNotFoundError(f"Error: Could not find filename {file_path}")

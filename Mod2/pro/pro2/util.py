@@ -4,13 +4,13 @@ import os
 import re
 import subprocess
 
-def clear_screen() -> None:
+def clear_screen():
     """OS sensitive clear command."""
     clear = "clear" if os.name == "posix" else "cls"
     subprocess.run(clear)
 
 
-def get_course_codes(courses: list[str]) -> set[str]:
+def get_course_codes(courses):
     """Cuts the section portion out of course codes.
 
     Parameters
@@ -24,7 +24,7 @@ def get_course_codes(courses: list[str]) -> set[str]:
         Set of course codes without sections.
     """
     course_code_pattern = r"^([A-Z]{3}-\d{3}[A-Z]?)"
-    course_codes: set[str] = set()
+    course_codes = set()
     for code in courses:
         course_code = re.match(course_code_pattern, code)
         if course_code is not None:
@@ -33,7 +33,7 @@ def get_course_codes(courses: list[str]) -> set[str]:
     return course_codes
 
 
-def find_faculty(search_for: str, to_search: list[str]) -> None | list[str]:
+def find_faculty(search_for, to_search):
     """Searches faculty names for a match and returns None or the name in a list
 
     Parameters

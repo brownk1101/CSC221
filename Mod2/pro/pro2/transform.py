@@ -3,9 +3,8 @@
 import pandas as pd
 
 
-def sort_dataframe(data: pd.DataFrame, sort_by: list[str] =
-                   ["Sec Divisions", "Sec Name", "Sec Faculty Info"]
-                   ) -> pd.DataFrame:
+def sort_dataframe(data, sort_by =
+                   ["Sec Divisions", "Sec Name", "Sec Faculty Info"]):
     """Sorts a DataFrame by columns, in ascending order.
 
     Parameters
@@ -23,7 +22,7 @@ def sort_dataframe(data: pd.DataFrame, sort_by: list[str] =
     return data.sort_values(by=sort_by)
 
 
-def get_column_uniques(data: pd.DataFrame, name: str) -> list[str]:
+def get_column_uniques(data, name):
     """Extracts unique values from a column within a DataFrame.
 
     Parameters
@@ -43,7 +42,7 @@ def get_column_uniques(data: pd.DataFrame, name: str) -> list[str]:
     return [str(x) for x in unique_values]
 
 
-def get_division_frame(data: pd.DataFrame, name: str | None) -> pd.DataFrame:
+def get_division_frame(data, name):
     """Extracts all rows associated to a specific division code
 
     Parameters
@@ -63,7 +62,7 @@ def get_division_frame(data: pd.DataFrame, name: str | None) -> pd.DataFrame:
     return frame
 
 
-def get_course_frame(data: pd.DataFrame, name: str, filter: bool = True) -> pd.DataFrame:
+def get_course_frame(data, name, filter = True):
     """Extracts rows associated with a course code
 
     Parameters
@@ -98,7 +97,7 @@ def get_course_frame(data: pd.DataFrame, name: str, filter: bool = True) -> pd.D
     return frame
 
 
-def get_faculty_frame(data: pd.DataFrame, name: str) -> pd.DataFrame:
+def get_faculty_frame(data, name):
     """Extracts rows associated with a faculty member or ones not assigned yet.
 
     Parameters

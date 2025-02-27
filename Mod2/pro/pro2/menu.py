@@ -2,7 +2,7 @@
 
 from util import clear_screen, find_faculty
 
-def print_main_menu() -> None:
+def print_main_menu():
     """Clear the screen, then print the main menu"""
     clear_screen()
     print(f"{'Main Menu':-^35}")
@@ -14,7 +14,7 @@ def print_main_menu() -> None:
     print("6. Exit")
 
 
-def get_main_menu_choice() -> int:
+def get_main_menu_choice():
     """Prompt user for main menu choice and validate against main menu options
 
     Returns
@@ -33,7 +33,7 @@ def get_main_menu_choice() -> int:
     return choice
 
 
-def print_submenu(header: str, options: dict[int, str]) -> None:
+def print_submenu(header, options):
     """Clear the screen, then print formatted submenu
 
     Parameters
@@ -58,7 +58,7 @@ def print_submenu(header: str, options: dict[int, str]) -> None:
         print(f"{k + 1:>{length_digits}}. {v}")
 
 
-def get_submenu_choice(amount_options: int) -> int:
+def get_submenu_choice(amount_options):
     """Prompts user for choice, validates, returns choice.
 
     Parameters
@@ -82,7 +82,7 @@ def get_submenu_choice(amount_options: int) -> int:
     return user_input - 1
 
 
-def submenu_course_code(courses: set[str]) -> str | None:
+def submenu_course_code(courses):
     """Clear the screen, prompt the user for input, validate, and return it.
 
     Parameters
@@ -116,7 +116,7 @@ def submenu_course_code(courses: set[str]) -> str | None:
     return choice
 
 
-def fte_faculty_submenu(faculty: list[str]) -> None | str:
+def fte_faculty_submenu(faculty):
     """Clear the screen, prompt the user for input, validate, and return it.
 
     Parameters

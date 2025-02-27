@@ -8,7 +8,7 @@ import transform
 import util
 
 
-def print_option1_instructions() -> None:
+def print_option1_instructions():
     """Print Instructions for option 1"""
     print()
     print("Option 1 instructions:")
@@ -24,7 +24,7 @@ def print_option1_instructions() -> None:
     input()
 
 
-def option1(data: pd.DataFrame):
+def option1(data):
     """Prompts user for division codes to create excel sheets.
 
     Parameters
@@ -75,7 +75,7 @@ def option1(data: pd.DataFrame):
                 load.create_excel_sheets(frame, options[choice].casefold())
 
 
-def course_enrollment_percentage(data: pd.DataFrame) -> None:
+def course_enrollment_percentage(data):
     """Prompts user for course name and then creates an excel sheet with
        pertinent information for that course.
 
@@ -103,7 +103,7 @@ def course_enrollment_percentage(data: pd.DataFrame) -> None:
         load.create_excel_sheets(frame, choice)
 
 
-def fte_per_division(data: pd.DataFrame) -> None:
+def fte_per_division(data):
     """Prompts user for division code and then creates an excel sheet with
        FTE information for the courses within that division
 
@@ -140,7 +140,7 @@ def fte_per_division(data: pd.DataFrame) -> None:
                           course_codes=course_codes, first_cell=options[choice])
 
 
-def fte_per_faculty(data: pd.DataFrame) -> None:
+def fte_per_faculty(data):
     """Prompts user for faculty name and then creates an excel sheet with
        FTE information for the courses for that faculty member
 
@@ -174,7 +174,7 @@ def fte_per_faculty(data: pd.DataFrame) -> None:
         input("Press enter to continue")
 
 
-def fte_per_course(data: pd.DataFrame) -> None:
+def fte_per_course(data):
     """Prompts user for course name and then creates an excel sheet with FTE
        information for all sections for that course
 
