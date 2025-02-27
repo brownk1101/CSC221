@@ -70,7 +70,67 @@ class Recipe:
         print("Ingredients:")
         for ingredient in self.__ingredients:
             print(f"- {ingredient}")
+        print()
         for count, step in enumerate(self.__steps):
             print(f"Step #{count + 1}")
             print(f"{'': >4}{step}")
 
+
+class DessertRecipe(Recipe):
+    def __init__(self, name, ingredients, steps, is_vegetarian, sweetness_level):
+        Recipe.__init__(self, name, ingredients, steps, is_vegetarian)
+        self.__sweetness_level = sweetness_level
+
+
+    def get_sweetness_level(self):
+        """Returns the sweetness level."""
+        return self.__sweetness_level
+
+
+    def set_sweetness_level(self, sweetness_level):
+        """Sets the sweetness level."""
+        self.__sweetness_level = sweetness_level
+
+
+    def display_recipe(self):
+        """Prints formatted recipe."""
+        print(f"{self.get_name(): ^40}")
+        print(f"{'':-^40}")
+        print(f"Sweetness: {self.__sweetness_level}")
+        print("Ingredients:")
+        for ingredient in self.get_ingredients():
+            print(f"- {ingredient}")
+        print()
+        for count, step in enumerate(self.get_steps()):
+            print(f"Step #{count + 1}")
+            print(f"{'': >4}{step}")
+
+
+class MainCourseRecipe(Recipe):
+    def __init__(self, name, ingredients, steps, is_vegetarian, spice_level):
+        Recipe.__init__(self, name, ingredients, steps, is_vegetarian)
+        self.__spice_level = spice_level
+
+
+    def get_spice_level(self):
+        """Returns the spice level."""
+        return self.__spice_level
+
+
+    def set_spice_level(self, spice_level):
+        """Sets the spice level."""
+        self.__spice_level = spice_level
+
+
+    def display_recipe(self):
+        """Prints formatted recipe."""
+        print(f"{self.get_name(): ^40}")
+        print(f"{'':-^40}")
+        print(f"Spice: {self.__spice_level}")
+        print("Ingredients:")
+        for ingredient in self.get_ingredients():
+            print(f"- {ingredient}")
+        print()
+        for count, step in enumerate(self.get_steps()):
+            print(f"Step #{count + 1}")
+            print(f"{'': >4}{step}")
