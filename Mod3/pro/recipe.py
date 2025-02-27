@@ -2,8 +2,8 @@
 
 
 class Recipe:
-    def __init__(self, name: str, ingredients: list[str], steps: list[str],
-                 is_vegetarian: bool):
+    def __init__(self, name, ingredients, steps,
+                 is_vegetarian):
         """Recipe class constructor.
 
         Params
@@ -23,42 +23,42 @@ class Recipe:
         self.__is_vegetarian = is_vegetarian
 
 
-    def get_name(self) -> str:
+    def get_name(self):
         """Returns the name of the recipe."""
         return self.__name
 
 
-    def get_ingredients(self) -> list[str]:
+    def get_ingredients(self):
         """Returns the list ingredients of the recipe."""
         return self.__ingredients
 
 
-    def get_steps(self) -> list[str]:
+    def get_steps(self):
         """Returns the list of steps in order."""
         return self.__steps
 
 
-    def is_vegetarian(self) -> bool:
+    def is_vegetarian(self):
         """Returns whether the recipe is vegetarian or not."""
         return self.__is_vegetarian
 
 
-    def set_name(self, name: str) -> None:
+    def set_name(self, name):
         """Sets the name of the recipe."""
         self.__name = name
 
     
-    def set_ingredients(self, ingredients: list[str]) -> None:
+    def set_ingredients(self, ingredients):
         """Sets the list of ingredients for the recipe."""
         self.__ingredients = ingredients
 
 
-    def set_steps(self, steps: list[str]) -> None:
+    def set_steps(self, steps):
         """Sets the steps for the recipe."""
         self.__steps = steps
 
 
-    def set_vegetarian(self, is_vegetarian: bool) -> None:
+    def set_vegetarian(self, is_vegetarian):
         """Sets whether the recipe is vegetarian or not."""
         self.__is_vegetarian = is_vegetarian
 
@@ -73,3 +73,4 @@ class Recipe:
         for count, step in enumerate(self.__steps):
             print(f"Step #{count + 1}")
             print(f"{'': >4}{step}")
+

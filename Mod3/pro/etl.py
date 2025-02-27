@@ -5,7 +5,7 @@ import os
 import pandas as pd
 
 
-def extract_recipes(file_name: str) -> pd.DataFrame:
+def extract_recipes(file_name):
     """Extracts recipes from an excel sheet located in the current directory.
 
     Params:
