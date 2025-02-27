@@ -9,7 +9,7 @@ def menu():
           + "\n3. Update Customer Info"
           + "\n4. Exit Program and Generate Customer Files")
 
-def get_cusInfo() -> list[Customer]:
+def get_cusInfo():
     """Read csv file of customers and create Customer Instances
 
     Returns
@@ -33,7 +33,7 @@ def get_cusInfo() -> list[Customer]:
     return customers
 
     
-def cus_update(lastName: str, customers: list[Customer]) -> list[Customer]:
+def cus_update(lastName, customers):
     """Update phone or address of customer.
 
     Parameters
