@@ -22,8 +22,8 @@ def create_excel_sheets(data, name):
     print(f"Created file: {file_path}")
 
 
-def create_fte_excel(data, name, course_codes, first_cell = None,
-                     filter = True):
+def create_fte_excel(data, name, course_codes, first_cell=None,
+                     filter=True):
     """Writes a formatted FTE excel file to the current directory
 
     Parameters
@@ -50,7 +50,8 @@ def create_fte_excel(data, name, course_codes, first_cell = None,
     current_row = 0
     start_column = 1 if first_cell is None else 2
 
-    with xlsxwriter.Workbook(file_path, {'nan_inf_to_errors': True}) as workbook:
+    excel_options = {'nan_inf_to_errors': True}
+    with xlsxwriter.Workbook(file_path, excel_options) as workbook:
         worksheet = workbook.add_worksheet()
         # Write the header row.
         if first_cell is not None:

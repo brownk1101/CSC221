@@ -1,7 +1,6 @@
 """Module containing program options."""
 
 
-import pandas as pd
 import load
 import menu
 import transform
@@ -86,11 +85,12 @@ def course_enrollment_percentage(data):
 
     choice = menu.submenu_course_code(course_codes)
     if choice is not None:
-        frame = transform.get_course_frame(data, choice, False)
+        frame = transform.get_course_frame(data, choice, False).copy()
 
         # Calculate enrollment percentage
-        frame["Calculated Percentage"] = \
-        ((frame["FTE Count"] / frame["Capacity"]) * 100).round(1).astype(str)+"%"
+        enrollment_percentage = ((frame["FTE Count"] / frame["Capacity"]) * 100)
+        enrollment_percentage = enrollment_percentage.round(1).astype(str)+"%"
+        frame["Calculated Percentage"] = enrollment_percentage
 
         choice = choice.split("-")
         choice = choice[0].lower() + choice[1] + "_per"
@@ -114,7 +114,8 @@ def fte_per_division(data):
 
     # Get the division
     choice = menu.get_menu_choice(len(unique_divisions))
-    division_frame = transform.get_division_frame(data, unique_divisions[choice])
+    division_frame = transform.get_division_frame(data,
+                                                  unique_divisions[choice])
 
     # Filter for the necessary columns
     columns_needed = ["Sec Name", "X Sec Delivery Method", "Meeting Times",
@@ -127,7 +128,7 @@ def fte_per_division(data):
     course_codes = sorted(util.get_course_codes(courses))
 
     load.create_fte_excel(data=division_frame, name=unique_divisions[choice],
-                          course_codes=course_codes, 
+                          course_codes=course_codes,
                           first_cell=unique_divisions[choice])
 
 
@@ -146,7 +147,7 @@ def fte_per_faculty(data):
         faculty_frame = transform.get_faculty_frame(data, faculty_member)
         # Filter columns
         columns_needed = ["Sec Name", "X Sec Delivery Method", "Meeting Times",
-                        "Capacity", "FTE Count", "Total FTE"]
+                          "Capacity", "FTE Count", "Total FTE"]
         faculty_frame = faculty_frame[columns_needed]
         faculty_frame["Generated FTE"] = None
 

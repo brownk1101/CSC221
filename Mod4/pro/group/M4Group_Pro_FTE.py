@@ -27,7 +27,8 @@ def main():
         print(f"Technical details: {e}")
         error = True
     except pd.errors.EmptyDataError as e:
-        print(f"The input file {filename} is empty. Please check the file contents.")
+        print(f"The input file {filename} is empty. Please check the file "
+              "contents.")
         print(f"Technical details: {e}")
         error = True
 

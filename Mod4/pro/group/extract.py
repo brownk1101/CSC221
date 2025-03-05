@@ -18,7 +18,8 @@ def extract_csv(filename):
         DataFrame containing the CSV information
     """
     assert filename is not None, "File should not be None."
-    assert isinstance(filename, str), f"Expected filename to be a string instead got {filename}."
+    assert isinstance(filename, str), "Expected filename to be a string" \
+                                      f"instead got {filename}."
     assert filename, "File should not be empty"
     assert filename.endswith(".csv"), f"Expected csv file got {filename}."
     data = pd.DataFrame()

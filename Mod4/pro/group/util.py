@@ -4,6 +4,7 @@ import os
 import re
 import subprocess
 
+
 def clear_screen():
     """OS sensitive clear command."""
     clear = "clear" if os.name == "posix" else "cls"
@@ -34,7 +35,8 @@ def get_course_codes(courses):
 
 
 def find_faculty(search_for, to_search):
-    """Searches faculty names for a match and returns None or the name in a list
+    """Searches faculty names for a match and returns None or the name in a
+       list
 
     Parameters
     ----------
@@ -55,7 +57,8 @@ def find_faculty(search_for, to_search):
         # If user entered first and last names, get the last name and check
         # against the last names from the list.
         if len(name) == 0:
-            name = [name for name in to_search if search_for.split()[1] == name.split()[1]]
+            name = [name for name in to_search if
+                    search_for.split()[1] == name.split()[1]]
     except IndexError:
         # If the user only entered first or last name, try them against the
         # last names of the list.

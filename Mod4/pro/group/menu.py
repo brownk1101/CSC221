@@ -3,7 +3,6 @@
 from util import find_faculty
 
 
-
 def get_menu_choice(amount_options):
     """Prompts user for choice, validates, returns choice.
 
@@ -24,11 +23,12 @@ def get_menu_choice(amount_options):
     user_input = 0
     while user_input not in range(1, amount_options + 1):
         try:
-            user_input = int(input(f"Enter a number between 1 and {amount_options}: "))
+            user_input = int(input("Enter a number between 1 and "
+                                   f"{amount_options}: "))
         except ValueError:
             # Ignoring anything other than a number in the correct range
             ...
-    # Gotta remove the 1 added to the options when printed for menus that 
+    # Gotta remove the 1 added to the options when printed for menus that
     # aren't main
     return user_input - 1
 
@@ -50,7 +50,7 @@ def print_menu(header, options):
     # Get the length of the longest option for formatting.
     max_length = max([len(op) + length_formatting for op in options])
     if max_length < len(header):
-        max_length = len(header) + length_digits 
+        max_length = len(header) + length_digits
 
     print(f"{header:-^{max_length}}")
     for i, option in enumerate(options):

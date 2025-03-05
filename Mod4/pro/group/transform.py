@@ -3,15 +3,16 @@
 import pandas as pd
 
 
-def sort_dataframe(data, sort_by =
-                   ["Sec Divisions", "Sec Name", "Sec Faculty Info"]):
+def sort_dataframe(data, sort_by=["Sec Divisions", "Sec Name",
+                                  "Sec Faculty Info"]):
     """Sorts a DataFrame by columns, in ascending order.
 
     Parameters
     ----------
     data: pd.DataFrame
         DataFrame to sort.
-    sort_by: list[str] (default = ["Sec Divisions", "Sec Name", "Sec Faculty Info"])
+    sort_by: list[str]
+        (default = ["Sec Divisions", "Sec Name", "Sec Faculty Info"])
         Column name(s) to sort by.
 
     Returns
@@ -55,14 +56,14 @@ def get_division_frame(data, name):
     # Get empty cells
     if name is None or name == "No code":
         frame = data[data["Sec Divisions"].isna() |
-                (data["Sec Divisions"] == "")]
+                     (data["Sec Divisions"] == "")]
     else:
         frame = data[data["Sec Divisions"] == name]
     frame = pd.DataFrame(frame)
     return frame
 
 
-def get_course_frame(data, name, filter = True):
+def get_course_frame(data, name, filter=True):
     """Extracts rows associated with a course code
 
     Parameters
