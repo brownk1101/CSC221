@@ -19,6 +19,7 @@ def create_excel_sheets(data, name):
     """
     file_path = os.path.join(os.getcwd(), name + ".xlsx")
     data.to_excel(excel_writer=file_path)
+    print(f"Created file: {file_path}")
 
 
 def create_fte_excel(data, name, course_codes, first_cell = None,
@@ -82,3 +83,5 @@ def create_fte_excel(data, name, course_codes, first_cell = None,
             worksheet.write(current_row, 1, "Div Total")
         # Try to fit the columns to the data.
         worksheet.autofit()
+
+    print(f"Created file: {file_path}")
