@@ -141,15 +141,33 @@ def fte_per_faculty(data):
     data: pd.DataFrame
         DataFrame to extract information from
     """
+
+
+    # Get the unique instances of each faculty fame from teh DataFrame
     unique_faculty = transform.get_column_uniques(data, "Sec Faculty Info")
+
+    # Get the faculty name to search from user
     faculty_member = menu.fte_faculty_submenu(unique_faculty)
     if faculty_member is not None:
-        faculty_frame = transform.get_faculty_frame(data, faculty_member)
+
+        # Get new DataFrame for faculty member
+        faculty_frame = transform.get_faculty_frame(data,
+                                                    faculty_member)
+
         # Filter columns
-        columns_needed = ["Sec Name", "X Sec Delivery Method", "Meeting Times",
+        columns_needed = ["Sec Name", "X Sec Delivery Method",
+                          "Meeting Times",
                           "Capacity", "FTE Count", "Total FTE"]
-        faculty_frame = faculty_frame[columns_needed]
-        faculty_frame["Generated FTE"] = None
+
+        # Ensure only existing columns are selected
+        existing_columns = [col for col in columns_needed if
+                            col in faculty_frame.columns]
+        faculty_frame = faculty_frame[
+            existing_columns].copy()  # Use .copy() to avoid warnings
+
+        # Add "Generated FTE" column if it doesn’t exist
+        if "Generated FTE" not in faculty_frame.columns:
+            faculty_frame["Generated FTE"] = None
 
         # Get the Courses for the faculty member
         courses = transform.get_column_uniques(faculty_frame, "Sec Name")
