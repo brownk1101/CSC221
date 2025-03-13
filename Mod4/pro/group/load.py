@@ -7,6 +7,32 @@ import transform
 import re
 
 
+def report_exists(division_name, file_extension=".xlsx"):
+    """
+    Checks if a division report file already exists in the current
+    directory.
+
+
+    division_name : str
+        The name of the division to check.
+    file_extension : str, optional
+        The file extension to check for (default is '.xlsx').
+
+    Returns
+    -------
+    bool
+        True if the report file exists, False otherwise.
+    """
+    # Get the current working directory where reports are saved
+    folder_path = os.getcwd()
+
+    # Standardized file name
+    file_name = f"{division_name.casefold()}_FTE{file_extension}"
+    file_path = os.path.join(folder_path, file_name)
+
+    return os.path.exists(file_path)
+
+
 def create_excel_sheets(data, name):
     """Writes excel files to the current directory.
 
