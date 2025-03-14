@@ -50,26 +50,27 @@ def find_faculty(search_for, to_search):
     None | list[str]
         If not found returns None. Else, returns a list of all matches.
     """
-    # Search for a full match
-    name = [name for name in to_search if search_for == name]
-    # Failing finding a match, try to split user input
-    try:
-        # If user entered first and last names, get the last name and check
-        # against the last names from the list.
-        if len(name) == 0:
-            name = [name for name in to_search if
-                    search_for.split()[1] == name.split()[1]]
-    except IndexError:
-        # If the user only entered first or last name, try them against the
-        # last names of the list.
-        name = [name for name in to_search if search_for == name.split()[1]]
-        ...
-    # Failing matching the last name, take the first initial of user input
-    # and try to match it against the first initial from the list.
-    if len(name) == 0:
-        name = [name for name in to_search if search_for[0] == name[0]]
-    # If we didn't find any matches at all, return None
-    if len(name) == 0:
-        name = None
 
-    return name
+    # Search for an exact faculty match
+    name = [n for n in to_search if search_for == n]
+
+    # If no exact match, attempt to match last names
+    if not name:
+        try:
+            search_last = search_for.split()[1]  # Extract last name
+            name = [n for n in to_search if n.split()[1] == search_last]
+        except IndexError:
+            # If user only provided one name, check against last names in the list
+            name = [n for n in to_search if search_for == n.split()[1]]
+
+    # If still no match, compare first initials
+    if not name:
+        name = [n for n in to_search if search_for[0] == n[0]]
+
+    # Return None if no match found
+    return name if name else None
+
+
+
+
+

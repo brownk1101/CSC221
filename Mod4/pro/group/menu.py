@@ -95,50 +95,52 @@ def fte_faculty_submenu(faculty):
 
     Parameters
     ----------
-    courses: list[str]
-        List of valid course codes.
+    faculty: list[str]
+        List of valid faculty names.
 
     Returns
     -------
-    str
-        The faculty member name.
+    str or None
+        The faculty member name, or "To be Announced", or None if the user quits
     """
-    choice = ""
-    found = False
     keep_going = True
-    found_name = None
-    while not found and keep_going:
-        print(f"{'FTE by Faculty':-^2}")
-        print("Enter the first and/or last name of a faculty member,")
-        print("or TBA for classes with no announced faculty.")
-        choice = input("(Q to quit): ")
-        choice = choice.strip().title()
+    while keep_going:
 
+        # Prompt  user for faculty name to search for
+        print(f"{'FTE by Faculty':-^2}\n")
+        choice = input("Enter the first and/or last name of a faculty "
+                       "member,\nTBA for classes with no announced "
+                       "faculty,\n(or enter Q to quit) \n "
+                       ">>>").strip().title()
         if choice == 'Q':
-            keep_going = False
-        elif choice == "Tba":
-            found_name = "To be Announced"
-            found = True
-        elif found_name is None:
-            found_name = find_faculty(choice, faculty)
-            if isinstance(found_name, list):
-                # If we found more than one name, prompt the user to choose
-                # one of them or to search for a new name.
-                if len(found_name) > 1:
-                    found_name.append("None of these")
-                    # Present found options to user
-                    print_menu("Did you mean", found_name)
-                    name_choice = get_menu_choice(len(found_name))
-                    if name_choice == len(found_name) - 1:
-                        found_name = None
-                    else:
-                        found_name = found_name[name_choice]
-                # If we find only one name, send it.
-                else:
-                    found_name = found_name[0]
-                    found = True
-        else:
-            print(f"{choice} could not be found, please check spelling")
-            print()
+            Return None
+        if choice == "Tba":
+            return "To be Announced"
 
-    return found_name
+        # call function to search for faculty
+        found_name = find_faculty(choice, faculty)
+
+        # If multiple matches are found, prompt user to choose
+        if isinstance(found_name, list) and len(found_name) > 1:
+            found_name.append("None of these")  # Add a "None" option
+
+            print_menu("Did you mean", found_name)
+            name_choice = get_menu_choice(len(found_name))
+
+            # User selects "None of these"
+            if name_choice == len(found_name) - 1:
+                found_name = None
+            else:
+                found_name = found_name[name_choice]
+
+        # If exactly one match, return it
+        elif isinstance(found_name, list) and len(found_name) == 1:
+            found_name = found_name[0]
+
+        # If no matches, notify user and loop again
+        if not found_name:
+            print(f"{choice} could not be found, please check spelling\n")
+            continue  # Restart loop
+
+        return found_name  # Return found faculty name
+
