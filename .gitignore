@@ -168,3 +168,4 @@ cython_debug/
 *.drawio
 *lock*
 *.csv
+.idea/
