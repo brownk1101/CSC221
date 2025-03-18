@@ -196,9 +196,6 @@ def fte_per_faculty(faculty_data, course_tier ):
             # Get the Courses for the faculty member
             courses = transform.get_column_uniques(faculty_frame, "Sec Name")
             course_codes = util.get_course_codes(courses)
-            print(course_codes)
-            course_codes = sorted(util.get_course_codes(courses))
-            print(course_codes)
             return
 
             # Get the last name and first initial for the filename
