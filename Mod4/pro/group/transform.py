@@ -131,7 +131,7 @@ def get_tier_frame():
     return tier_frame
 
 
-def generate_FTE(data, tier, support = 1926):
+def generate_fte(data, tier, support = 1926):
     """
     calculates generated FTE for a set of data and returns it as a
     Pandas Series
@@ -248,7 +248,7 @@ def compute_fte(row, courseid_to_funding, support=1926):
 
     return 0  # Return 0 if an error occurs so program doesn't crash
 
-def total_FTEs(data):
+def total_fte(data):
     """
     calculates to total FTE for each course and for a division
     :param data: ps.DataFrame
