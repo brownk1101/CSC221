@@ -20,7 +20,10 @@ def main():
     for filename in filenames:
         print(f"Trying to extract from {filename}.")
         try:
-            df = extract.extract_csv(filename=filename)
+            if filename.endswith(".csv"):
+                df = extract.extract_csv(filename=filename)
+            elif filename.endswith(".xlsx"):
+                df = extract.extract_excel(filename=filename)
         except FileNotFoundError as e:
             print(f"""Unable to find the {filename}. Please make sure it exists in
                     the current directory.""")
