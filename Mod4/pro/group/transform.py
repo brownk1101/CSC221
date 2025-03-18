@@ -168,7 +168,7 @@ def generate_fte(data, tier, support = 1926):
                     f"DataFrame.")
 
         # Check if required columns exist in 'data'
-        required_data_columns = ["Course Code", "Total FTE"]
+        required_data_columns = ["Sec Name", "Total FTE"]
         for col in required_data_columns:
             if col not in data.columns:
                 raise KeyError(
@@ -190,11 +190,11 @@ def generate_fte(data, tier, support = 1926):
         return data
 
     except TypeError as e:
-        print(f"TypeError in generate_FTE: {e}")
+        print(f"TypeError in generate_fte: {e}")
     except KeyError as e:
-        print(f"KeyError in generate_FTE: {e}")
+        print(f"KeyError in generate_fte: {e}")
     except Exception as e:
-        print(f"Unexpected error in generate_FTE: {e}")
+        print(f"Unexpected error in generate_fte: {e}")
 
     return data.copy()
 
@@ -215,18 +215,18 @@ def compute_fte(row, courseid_to_funding, support=1926):
 
     try:
         # Ensure required columns are in DataFrame
-        if "Course Code" not in row:
+        if "Sec Name" not in row:
             raise KeyError("Missing required column: 'Course Code'")
         if "Total FTE" not in row:
             raise KeyError("Missing required column: 'Total FTE'")
 
         # Ensure 'Course Code' is a string and has at least 3 characters
-        course_code = row["Course Code"]
+        course_code = row["Sec Name"]
         if not isinstance(course_code, str) or len(course_code) < 3:
             raise ValueError(f"Invalid course code: {course_code}")
 
         # Extract prefix (first 3 chars)
-        course_prefix = row["Course Code"][:3]
+        course_prefix = row["Sec Name"][:3]
 
         # Ensure 'Total FTE' is a number
         total_fte = row["Total FTE"]

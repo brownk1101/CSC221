@@ -67,7 +67,7 @@ def create_fte_excel(data, name, course_codes, first_cell=None,
     """
 
     # Get the total FTE values
-    course_totals, final_total = transform.total_FTEs(data)
+    course_totals, final_total = transform.total_fte(data)
 
     #Determine if faculty or div file to use as label for final total
     is_faculty_report = "Faculty Name" in data.columns

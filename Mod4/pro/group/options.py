@@ -191,11 +191,15 @@ def fte_per_faculty(faculty_data, course_tier ):
 
             # Add "Generated FTE" column if it doesn’t exist
             if "Generated FTE" not in faculty_frame.columns:
-                transform.generate_FTE(faculty_data, course_tier)
+                transform.generate_fte(faculty_data, course_tier)
 
             # Get the Courses for the faculty member
             courses = transform.get_column_uniques(faculty_frame, "Sec Name")
+            course_codes = util.get_course_codes(courses)
+            print(course_codes)
             course_codes = sorted(util.get_course_codes(courses))
+            print(course_codes)
+            return
 
             # Get the last name and first initial for the filename
             file_name = faculty_member.split()[1] + faculty_member[0]

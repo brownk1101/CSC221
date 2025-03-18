@@ -36,7 +36,8 @@ def main():
             error = True
 
         if not df.empty:
-            df = transform.sort_dataframe(df)
+            if filename.startswith("deansDailyCsar"):
+                df = transform.sort_dataframe(df)
             print("Data extraction complete and sorted.")
             dfs[filename] = df
         else:
