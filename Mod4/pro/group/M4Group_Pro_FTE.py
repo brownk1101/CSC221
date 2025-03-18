@@ -16,14 +16,17 @@ def main():
     keep_going = True
 
     dfs = {} # Dictionary to store DataFrames
-    filenames = ["deansDailyCsar.csv", "FTE_Tier.xlsx"]
+    filenames = ["deanDailyCsar.csv", "FTE_Tier.xlsx"]
     for filename in filenames:
         print(f"Trying to extract from {filename}.")
         try:
             if filename.endswith(".csv"):
                 df = extract.extract_csv(filename=filename)
             elif filename.endswith(".xlsx"):
-                df = extract.extract_excel(filename=filename)
+                df = pd.read_excel(filename)
+            else:
+                print(f"Unsupported file type: {filename}")
+                continue
         except FileNotFoundError as e:
             print(f"""Unable to find the {filename}. Please make sure it exists in
                     the current directory.""")
@@ -38,14 +41,14 @@ def main():
         if not df.empty:
             if filename.startswith("deansDailyCsar"):
                 df = transform.sort_dataframe(df)
-            print("Data extraction complete and sorted.")
+                print("Data extraction complete and sorted.")
             dfs[filename] = df
         else:
             print("Data failed to load.")
             error = True
 
     # Assign each DataFrame to a variable for easier accessibility
-    csar_df = dfs.get("deansDailyCsar.csv")
+    csar_df = dfs.get("deanDailyCsar.csv")
     tier_df = dfs.get("FTE_Tier.xlsx")
 
 
