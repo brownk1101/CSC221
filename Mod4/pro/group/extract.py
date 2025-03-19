@@ -2,6 +2,8 @@
 
 import os.path
 import pandas as pd
+import transform
+
 
 
 def extract_csv(filename):
@@ -26,10 +28,12 @@ def extract_csv(filename):
     try:
         file_path = os.path.join(os.getcwd(), filename)
         data = pd.read_csv(file_path)
-    except FileNotFoundError:
-        raise FileNotFoundError(f"Error: Could not find filename {file_path}")
-    except pd.errors.EmptyDataError:
-        raise pd.errors.EmptyDataError(f"Error: File {file_path} is empty")
+    except FileNotFoundError as exc:
+        raise FileNotFoundError(f"Error: Could not find filename "
+                                f"{file_path}") from exc
+    except pd.errors.EmptyDataError as exc:
+        raise pd.errors.EmptyDataError(f"Error: File {file_path} is "
+                                       f"empty") from exc
 
     return data
 
@@ -56,9 +60,48 @@ def extract_excel(filename):
     try:
         file_path = os.path.join(os.getcwd(), filename)
         data = pd.read_excel(file_path)
-    except FileNotFoundError:
-        raise FileNotFoundError(f"Error: Could not find filename {file_path}")
-    except pd.errors.EmptyDataError:
-        raise pd.errors.EmptyDataError(f"Error: File {file_path} is empty")
+    except FileNotFoundError as exc:
+        raise FileNotFoundError(f"Error: Could not find filename "
+                                f"{file_path}") from exc
+    except pd.errors.EmptyDataError as exc:
+        raise pd.errors.EmptyDataError(f"Error: File {file_path} is "
+                                       f"empty") from exc
 
     return data
+
+
+def extract_data(filenames):
+
+    """Extracts data from files and returns a dictionary of DataFrames."""
+
+
+    dfs = {}
+    error = False
+
+    for filename in filenames:
+        df = None
+        print(f"Trying to extract from {filename}.")
+        try:
+            if filename.endswith(".csv"):
+                df = extract_csv(filename=filename)
+            elif filename.endswith(".xlsx"):
+                df = extract_excel(filename=filename)
+        except FileNotFoundError as e:
+            print(f"Unable to find {filename}. Please ensure it exists in the current directory.")
+            print(f"Technical details: {e}")
+            error = True
+        except pd.errors.EmptyDataError as e:
+            print(f"The input file {filename} is empty. Please check the file contents.")
+            print(f"Technical details: {e}")
+            error = True
+
+        if df is not None and not df.empty:
+            if filename.startswith("deanDailyCsar"):
+                df = transform.sort_dataframe(df)
+                print("Data extraction complete and sorted.")
+            dfs[filename] = df
+        else:
+            print("Data failed to load.")
+            error = True
+
+    return dfs, error

@@ -4,6 +4,7 @@ import pandas as pd
 import extract
 
 
+
 def sort_dataframe(data, sort_by=["Sec Divisions", "Sec Name",
                                   "Sec Faculty Info"]):
     """Sorts a DataFrame by columns, in ascending order.
@@ -66,7 +67,7 @@ def get_division_frame(data, name):
     return frame
 
 
-def get_course_frame(data, name, filter=True):
+def get_course_frame(data, name, apply_filter=True):
     """Extracts rows associated with a course code
 
     Parameters
@@ -86,7 +87,7 @@ def get_course_frame(data, name, filter=True):
     """
     # Get the course rows
     frame = data[data["Sec Name"].str.contains(name)]
-    if filter:
+    if apply_filter:
         # Get all the face-to-face sections.
         zero_sections = frame["Sec Name"].str.contains(r"-\d0\d\d")
         zero_frame = frame[zero_sections]
@@ -127,6 +128,7 @@ def get_tier_frame():
         tier_frame: DataFrame containing the Tier and proposed
         funding level for each course ID
     """
+
     tier_frame = extract.extract_csv('FTE_Tier.xlsx')
     return tier_frame
 
@@ -149,8 +151,6 @@ def generate_fte(data, tier, support = 1926):
         generate_fte: a new DataFrame that has the generated FTE
     """
     # Constant value used for calculating FTE
-    
-
     try:
         # Ensure valid dataframes
         if not isinstance(data, pd.DataFrame):
@@ -200,8 +200,7 @@ def generate_fte(data, tier, support = 1926):
         print(f"TypeError in generate_fte: {e}")
     except KeyError as e:
         print(f"KeyError in generate_fte: {e}")
-    except Exception as e:
-        print(f"Unexpected error in generate_fte: {e}")
+
 
     return data.copy()
 
@@ -250,8 +249,7 @@ def compute_fte(row, courseid_to_funding, support=1926):
         print(f" ValueError in compute_fte: {e}")
     except TypeError as e:
         print(f" TypeError in compute_fte: {e}")
-    except Exception as e:
-        print(f" Unexpected error in compute_fte: {e}")
+
 
     return 0  # Return 0 if an error occurs so program doesn't crash
 
@@ -291,9 +289,9 @@ def total_ftes(data):
                   errors="ignore")
 
         # Get total for the entire division
-        final_FTE_total = data["Generated FTE"].sum()
+        final_fte_total = data["Generated FTE"].sum()
 
-        return course_fte_total, final_FTE_total
+        return course_fte_total, final_fte_total
 
     except KeyError as e:
         print(f"️ KeyError in total_FTEs: {e}")
@@ -301,24 +299,5 @@ def total_ftes(data):
         print(f"️ ValueError in total_FTEs: {e}")
     except TypeError as e:
         print(f"️ TypeError in total_FTEs: {e}")
-    except Exception as e:
-        print(f"️ Unexpected error in total_FTEs: {e}")
 
     return {}, 0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

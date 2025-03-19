@@ -48,13 +48,15 @@ def print_menu(header, options):
     # Add 2 to account for the '. ' in the print loop.
     length_formatting = length_digits + 2
     # Get the length of the longest option for formatting.
-    max_length = max([len(op) + length_formatting for op in options])
+    max_length = max(len(op) + length_formatting for op in options)
     if max_length < len(header):
         max_length = len(header) + length_digits
 
     print(f"{header:-^{max_length}}")
     for i, option in enumerate(options):
         print(f"{i + 1:>{length_digits}}. {option}")
+
+
 
 
 def submenu_course_code(courses):
@@ -143,4 +145,3 @@ def fte_faculty_submenu(faculty):
             continue  # Restart loop
 
         return found_name  # Return found faculty name
-

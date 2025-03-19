@@ -1,11 +1,12 @@
 """Module containing program options."""
 
 
+import pandas as pd
 import load
 import menu
 import transform
 import util
-import pandas as pd
+
 
 
 def print_option1_instructions():
@@ -38,12 +39,12 @@ def option1(data):
     menu.print_menu(header, options)
 
     choice_list = []
-    all = False
+    select_all = False
     keep_entering = True
     while keep_entering:
         choice = menu.get_menu_choice(len(options))
         if choice == 0:
-            all = True
+            select_all = True
             keep_entering = False
         elif options[choice].startswith("Finish"):
             keep_entering = False
@@ -53,7 +54,7 @@ def option1(data):
         else:
             choice_list.append(choice)
 
-    if all:
+    if select_all:
         for code in unique_codes:
             frame = transform.get_division_frame(data, code)
             load.create_excel_sheets(frame, code.casefold())
@@ -88,7 +89,8 @@ def course_enrollment_percentage(data):
     if choice is not None:
         frame = transform.get_course_frame(data, choice, False).copy()
 
-        enrollment_percentage = util.calculate_enrollment_percentage(frame["FTE Count"], frame["Capacity"])
+        enrollment_percentage = util.calculate_enrollment_percentage(
+            frame["FTE Count"], frame["Capacity"])
         frame["Calculated Percentage"] = enrollment_percentage
 
         choice = choice.split("-")
@@ -214,8 +216,6 @@ def fte_per_faculty(faculty_data, course_tier ):
         print(f"ValueError in fte_per_faculty: {e}")
     except TypeError as e:
         print(f"TypeError in fte_per_faculty: {e}")
-    except Exception as e:
-        print(f"Unexpected error in fte_per_faculty: {e}")
 
     print("Returning to main menu...")
 
@@ -232,10 +232,12 @@ def fte_per_course(data, course_tier_data):
     courses = transform.get_column_uniques(data, "Sec Name")
     course_codes = util.get_course_codes(courses)
     choice = menu.submenu_course_code(course_codes)
-    course_data = transform.get_course_frame(data=data, name=choice, filter=False).copy()
-    enrollment_percentage = util.calculate_enrollment_percentage(course_data["FTE Count"], course_data["Capacity"])
+    course_data = transform.get_course_frame(data=data, name=choice,
+                                             apply_filter=False).copy()
+    enrollment_percentage = util.calculate_enrollment_percentage(
+        course_data["FTE Count"], course_data["Capacity"])
     course_data["Enrollment Per"] = enrollment_percentage
     course_data = transform.generate_fte(course_data, course_tier_data)
     if choice is not None:
         load.create_fte_excel(data=course_data, name=choice,
-                              course_codes=[choice], filter=False)
+                              course_codes=[choice], apply_filter=False)

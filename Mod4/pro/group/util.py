@@ -1,14 +1,9 @@
 """Utility functions."""
 
-import os
+
 import re
-import subprocess
+import pandas as pd
 
-
-def clear_screen():
-    """OS sensitive clear command."""
-    clear = "clear" if os.name == "posix" else "cls"
-    subprocess.run(clear)
 
 
 def get_course_codes(courses):
@@ -81,4 +76,8 @@ def calculate_enrollment_percentage(count, capacity):
     capacity: int
         Max number of students that can be enrolled
     """
+    if isinstance(capacity, pd.Series):
+        # Replace any 0 values in the Series with NaN to prevent division errors
+        capacity = capacity.replace(0, pd.NA)
+
     return ((count / capacity) * 100).round(1).astype(str) + "%"
