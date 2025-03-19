@@ -33,7 +33,6 @@ def extract_csv(filename):
 
     return data
 
-
 def extract_excel(filename):
     """Load Excel file into a Pandas DataFrame
 
