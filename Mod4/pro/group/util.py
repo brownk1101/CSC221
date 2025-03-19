@@ -71,6 +71,14 @@ def find_faculty(search_for, to_search):
     return name if name else None
 
 
-
-
-
+def calculate_enrollment_percentage(count, capacity):
+    """Calculates enrollment percentage based on course count and capacity
+    
+    Paramters
+    ---------
+    count: int
+        Student enrolled in the course
+    capacity: int
+        Max number of students that can be enrolled
+    """
+    return ((count / capacity) * 100).round(1).astype(str) + "%"

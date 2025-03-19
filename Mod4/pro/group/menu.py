@@ -111,7 +111,7 @@ def fte_faculty_submenu(faculty):
         choice = input("Enter the first and/or last name of a faculty "
                        "member,\nTBA for classes with no announced "
                        "faculty,\n(or enter Q to quit) \n "
-                       ">>>").strip().title()
+                       ">>> ").strip().title()
         if choice == 'Q':
             return None
         if choice == "Tba":

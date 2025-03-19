@@ -133,8 +133,7 @@ def get_tier_frame():
 
 def generate_fte(data, tier, support = 1926):
     """
-    calculates generated FTE for a set of data and returns it as a
-    Pandas Series
+    calculates generated FTE for a set of data and returns new dataframe containing generated fte
 
     Parameters
     ----------
@@ -147,8 +146,10 @@ def generate_fte(data, tier, support = 1926):
     Returns
     -------
     pd.DataFrame
-        generate_FTE: a new DataFrame that has the generated FTE
+        generate_fte: a new DataFrame that has the generated FTE
     """
+    # Constant value used for calculating FTE
+    
 
     try:
         # Ensure valid dataframes
@@ -260,9 +261,9 @@ def total_ftes(data):
     :param data: ps.DataFrame
         A DataFrame that has individual secs generated FTE 
     :return: 
-    course_FTE: dictionary
+    course_fte: dictionary
         courses and their total generated FTE
-    final_FTE: Interger
+    final_fte: Interger
         total generated FTE for entire dataframe
     
     """

@@ -12,7 +12,8 @@ def report_exists(division_name, file_extension=".xlsx"):
     Checks if a division report file already exists in the current
     directory.
 
-
+    Parameters
+    ----------
     division_name : str
         The name of the division to check.
     file_extension : str, optional
@@ -112,8 +113,8 @@ def create_fte_excel(data, name, course_codes, first_cell=None,
             # Write total.
             worksheet.write(current_row, start_column - 1, "Total")
             fte_column_index = data.columns.get_loc(
-                "Generated FTE") if "Generated FTE" in data.columns else start_column + 4
-            worksheet.write(current_row, 8, course_totals.get(course,
+                "Generated FTE") + start_column if "Generated FTE" in data.columns else start_column + 4
+            worksheet.write(current_row, fte_column_index, course_totals.get(course,
                                                               0))
             current_row += 1
 
@@ -122,10 +123,10 @@ def create_fte_excel(data, name, course_codes, first_cell=None,
             worksheet.write(current_row, 1, total_label)
             if "Generated FTE" in data.columns:
                 fte_column_index = data.columns.get_loc(
-                    "Generated FTE")
+                    "Generated FTE") + start_column
             else:
-                fte_column_index = start_column + 4
-            worksheet.write(current_row, 8, final_total)
+                fte_column_index = data.columns.get_loc("Generated FTE") + start_column if "Generated_FTE" in data.columns else start_column + 4
+            worksheet.write(current_row, fte_column_index, final_total)
         # Try to fit the columns to the data.
         worksheet.autofit()
 

@@ -88,9 +88,7 @@ def course_enrollment_percentage(data):
     if choice is not None:
         frame = transform.get_course_frame(data, choice, False).copy()
 
-        # Calculate enrollment percentage
-        enrollment_percentage = ((frame["FTE Count"] / frame["Capacity"]) * 100)
-        enrollment_percentage = enrollment_percentage.round(1).astype(str)+"%"
+        enrollment_percentage = util.calculate_enrollment_percentage(frame["FTE Count"], frame["Capacity"])
         frame["Calculated Percentage"] = enrollment_percentage
 
         choice = choice.split("-")
@@ -190,7 +188,7 @@ def fte_per_faculty(faculty_data, course_tier ):
                 existing_columns].copy()  # Use .copy() to avoid warnings
 
             if "Generated FTE" not in faculty_frame.columns:
-                faculty_frame = transform.generate_FTE(faculty_frame,
+                faculty_frame = transform.generate_fte(faculty_frame,
                                                        course_tier)
 
             # Get the Courses for the faculty member
@@ -222,7 +220,7 @@ def fte_per_faculty(faculty_data, course_tier ):
     print("Returning to main menu...")
 
 
-def fte_per_course(data):
+def fte_per_course(data, course_tier_data):
     """Prompts user for course name and then creates an excel sheet with FTE
        information for all sections for that course
 
@@ -234,6 +232,10 @@ def fte_per_course(data):
     courses = transform.get_column_uniques(data, "Sec Name")
     course_codes = util.get_course_codes(courses)
     choice = menu.submenu_course_code(course_codes)
+    course_data = transform.get_course_frame(data=data, name=choice, filter=False).copy()
+    enrollment_percentage = util.calculate_enrollment_percentage(course_data["FTE Count"], course_data["Capacity"])
+    course_data["Enrollment Per"] = enrollment_percentage
+    course_data = transform.generate_fte(course_data, course_tier_data)
     if choice is not None:
-        load.create_fte_excel(data=data, name=choice,
+        load.create_fte_excel(data=course_data, name=choice,
                               course_codes=[choice], filter=False)

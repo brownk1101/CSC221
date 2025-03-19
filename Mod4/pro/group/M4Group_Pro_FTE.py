@@ -74,7 +74,7 @@ def main():
         elif option == 3:
             options.fte_per_faculty(csar_df, tier_df)
         elif option == 4:
-            options.fte_per_course(csar_df)
+            options.fte_per_course(csar_df, tier_df)
         elif option == 5:
             print("Thanks for playing.")
             keep_going = False
