@@ -1,0 +1,233 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36" version="26.1.1" pages="6">
+  <diagram name="Main" id="TCXEpc08imBPfcZi9nZa">
+    <mxGraphModel dx="1393" dy="803" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="e7oS5J1CF7U_wuVs62tT-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="e7oS5J1CF7U_wuVs62tT-1" target="e7oS5J1CF7U_wuVs62tT-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7oS5J1CF7U_wuVs62tT-1" value="Start" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="20" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e7oS5J1CF7U_wuVs62tT-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="e7oS5J1CF7U_wuVs62tT-2" target="e7oS5J1CF7U_wuVs62tT-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7oS5J1CF7U_wuVs62tT-2" value="Extract information from: DeanDailyScar.csv&lt;div&gt;FTE_Tier.xlsx&lt;/div&gt;&lt;div&gt;Sorting by Division, Sec Name, then, Faculty&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="267.5" y="150" width="285" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e7oS5J1CF7U_wuVs62tT-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitPerimeter=0;" edge="1" parent="1" source="e7oS5J1CF7U_wuVs62tT-4" target="e7oS5J1CF7U_wuVs62tT-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7oS5J1CF7U_wuVs62tT-19" value="Option1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="e7oS5J1CF7U_wuVs62tT-13">
+          <mxGeometry x="0.8353" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7oS5J1CF7U_wuVs62tT-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="e7oS5J1CF7U_wuVs62tT-4" target="e7oS5J1CF7U_wuVs62tT-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7oS5J1CF7U_wuVs62tT-24" value="Option 5" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="e7oS5J1CF7U_wuVs62tT-15">
+          <mxGeometry x="0.8313" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7oS5J1CF7U_wuVs62tT-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="e7oS5J1CF7U_wuVs62tT-4" target="e7oS5J1CF7U_wuVs62tT-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7oS5J1CF7U_wuVs62tT-21" value="Option 3" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="e7oS5J1CF7U_wuVs62tT-16">
+          <mxGeometry x="0.42" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7oS5J1CF7U_wuVs62tT-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="e7oS5J1CF7U_wuVs62tT-4" target="e7oS5J1CF7U_wuVs62tT-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7oS5J1CF7U_wuVs62tT-22" value="Option 4" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="e7oS5J1CF7U_wuVs62tT-17">
+          <mxGeometry x="0.71" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7oS5J1CF7U_wuVs62tT-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="e7oS5J1CF7U_wuVs62tT-4" target="e7oS5J1CF7U_wuVs62tT-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7oS5J1CF7U_wuVs62tT-20" value="Option2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="e7oS5J1CF7U_wuVs62tT-18">
+          <mxGeometry x="0.7545" y="-6" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7oS5J1CF7U_wuVs62tT-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="e7oS5J1CF7U_wuVs62tT-4" target="e7oS5J1CF7U_wuVs62tT-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7oS5J1CF7U_wuVs62tT-27" value="Option 6" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="e7oS5J1CF7U_wuVs62tT-26">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7oS5J1CF7U_wuVs62tT-4" value="Load and display Menu" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e7oS5J1CF7U_wuVs62tT-7" value="FTE per course" style="shape=offPageConnector;whiteSpace=wrap;html=1;size=0.5;" vertex="1" parent="1">
+          <mxGeometry x="600" y="400" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e7oS5J1CF7U_wuVs62tT-8" value="FTE per Instructor" style="shape=offPageConnector;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="400" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e7oS5J1CF7U_wuVs62tT-9" value="FTE by Division" style="shape=offPageConnector;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="400" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e7oS5J1CF7U_wuVs62tT-10" value="Get Course Enrollment Percentage" style="shape=offPageConnector;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="400" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e7oS5J1CF7U_wuVs62tT-11" value="Enter \&quot;Sec Divisions\&quot; code&quot;" style="shape=offPageConnector;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="400" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e7oS5J1CF7U_wuVs62tT-25" value="End Program" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="400" width="100" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="zIioV_GlrFxvP3DEHxY9" name="Enter \&quot;Sec Divisions\&quot; code">
+    <mxGraphModel dx="1393" dy="803" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Xoa2CWhr8o5nAs08Nn_Z-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Xoa2CWhr8o5nAs08Nn_Z-1" target="Xoa2CWhr8o5nAs08Nn_Z-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Xoa2CWhr8o5nAs08Nn_Z-1" value="Display Division codes&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;1. All&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&amp;nbsp;2. CBUS1&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&amp;nbsp;3. CBUS3&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&amp;nbsp;4. CGEN&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&amp;nbsp;5. CGEN3&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&amp;nbsp;6. CGEN4&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&amp;nbsp;7. CGEN5&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&amp;nbsp;8. CGEN6&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&amp;nbsp;9. CHLT1&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;10. CHLT2&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;11. CSUPP&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;12. CTEC1&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;13. CTEC2&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;14. CTEC3&lt;/div&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="240" y="60" width="320" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="Xoa2CWhr8o5nAs08Nn_Z-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Xoa2CWhr8o5nAs08Nn_Z-2" target="Xoa2CWhr8o5nAs08Nn_Z-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FWlgG65jPlP8nv9Rbdqu-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Xoa2CWhr8o5nAs08Nn_Z-2" target="Xoa2CWhr8o5nAs08Nn_Z-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Xoa2CWhr8o5nAs08Nn_Z-2" value="Get div code(s) from user" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="317.5" y="340" width="165" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Xoa2CWhr8o5nAs08Nn_Z-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Xoa2CWhr8o5nAs08Nn_Z-7" target="Xoa2CWhr8o5nAs08Nn_Z-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Xoa2CWhr8o5nAs08Nn_Z-7" value="Write div code(s)&#39;s data&lt;div&gt;&amp;nbsp;to its own Excel file&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="295" y="470" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Xoa2CWhr8o5nAs08Nn_Z-9" value="Return to main menu" style="shape=offPageConnector;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="590" width="80" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="RXFXUmCZn5E08XFLzYHM" name="Get Course Enrollment Percentage">
+    <mxGraphModel dx="1393" dy="803" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="nTOGouBSIeaTSrlyQPBf-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="rpowusud2MXc3qOODyFQ-1" target="nTOGouBSIeaTSrlyQPBf-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rpowusud2MXc3qOODyFQ-1" value="Get course code from user" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="80" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nTOGouBSIeaTSrlyQPBf-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="nTOGouBSIeaTSrlyQPBf-1" target="nTOGouBSIeaTSrlyQPBf-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nTOGouBSIeaTSrlyQPBf-1" value="Calculate enrollment percentage for course" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="345" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BSJOfeekkz_s7tNW2E7Q-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="nTOGouBSIeaTSrlyQPBf-3" target="BSJOfeekkz_s7tNW2E7Q-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nTOGouBSIeaTSrlyQPBf-3" value="Write information to an Excel File" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="296.25" y="360" width="217.5" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="BSJOfeekkz_s7tNW2E7Q-2" value="Return to Main Menu" style="shape=offPageConnector;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="365" y="530" width="80" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="HFbPF7RIKvFfyCsrzqMi" name="FTE by Division">
+    <mxGraphModel dx="1393" dy="803" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="VCh93svPHD91yDApf5lP-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="VCh93svPHD91yDApf5lP-1" target="VCh93svPHD91yDApf5lP-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VCh93svPHD91yDApf5lP-1" value="Get Division Code from user" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="50" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VCh93svPHD91yDApf5lP-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="VCh93svPHD91yDApf5lP-4" target="VCh93svPHD91yDApf5lP-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VCh93svPHD91yDApf5lP-4" value="Write data for division to&amp;nbsp;&lt;div&gt;it&#39;s own Excel File&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="190" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VCh93svPHD91yDApf5lP-6" value="Return to Main Menu" style="shape=offPageConnector;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="370" width="80" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="M041L4Ai0h3rDijDeTI5" name="FTE per Instructor">
+    <mxGraphModel dx="1393" dy="803" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="KSYhCPTjDiQLJnJpFN7--3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KSYhCPTjDiQLJnJpFN7--1" target="KSYhCPTjDiQLJnJpFN7--2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KSYhCPTjDiQLJnJpFN7--1" value="Get Faculty name&lt;div&gt;&amp;nbsp;from user&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="80" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KSYhCPTjDiQLJnJpFN7--5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KSYhCPTjDiQLJnJpFN7--2" target="KSYhCPTjDiQLJnJpFN7--4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KSYhCPTjDiQLJnJpFN7--2" value="Get Data for Faculty and calculate FTE for each course" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="335" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KSYhCPTjDiQLJnJpFN7--7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="KSYhCPTjDiQLJnJpFN7--4" target="KSYhCPTjDiQLJnJpFN7--6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KSYhCPTjDiQLJnJpFN7--4" value="Write the information&lt;div&gt;&amp;nbsp;to an Excel file&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="312.5" y="360" width="165" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KSYhCPTjDiQLJnJpFN7--6" value="Return to Main menu" style="shape=offPageConnector;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="355" y="500" width="80" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="6xTd4gdZnvuFh-PzYsSR" name="FTE per course">
+    <mxGraphModel dx="1393" dy="803" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="LeMdKtSmenONURMCRj65-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="LeMdKtSmenONURMCRj65-1" target="LeMdKtSmenONURMCRj65-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LeMdKtSmenONURMCRj65-1" value="Get Sec Name&lt;div&gt;from user&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="LeMdKtSmenONURMCRj65-2" value="Calculate FTE for each course" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="LeMdKtSmenONURMCRj65-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="LeMdKtSmenONURMCRj65-4" target="LeMdKtSmenONURMCRj65-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LeMdKtSmenONURMCRj65-4" value="Write data to&lt;div&gt;&amp;nbsp;an Excel file&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="340" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="LeMdKtSmenONURMCRj65-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.583;entryY=-0.017;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="LeMdKtSmenONURMCRj65-2" target="LeMdKtSmenONURMCRj65-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LeMdKtSmenONURMCRj65-6" value="Return to main meny" style="shape=offPageConnector;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="510" width="80" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
