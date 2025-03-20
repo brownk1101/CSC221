@@ -7,7 +7,6 @@ import xlsxwriter
 import transform
 
 
-
 def report_exists(division_name, file_extension=".xlsx"):
     """
     Checks if a division report file already exists in the current
@@ -63,7 +62,8 @@ def create_fte_excel(data, name, course_codes, first_cell=None,
     course_codes: list[str]
         List of unique course codes without section information.
     first_cell: str | None (default = None)
-        If not None, the value will be written to the first cell of the sheet.
+        If not None, the value will be written to the first cell
+        of the sheet.
     apply_filter: bool
         If true, course frame will be filtered.
     """
@@ -71,7 +71,7 @@ def create_fte_excel(data, name, course_codes, first_cell=None,
     # Get the total FTE values
     course_totals, final_total = transform.total_ftes(data)
 
-    #Determine if faculty or div file to use as label for final total
+    # Determine if faculty or div file to use as label for final total
     is_faculty_report = "Faculty Name" in data.columns
     total_label = "Faculty Total" if is_faculty_report else "Div Total"
 
@@ -103,8 +103,9 @@ def create_fte_excel(data, name, course_codes, first_cell=None,
         for course in course_codes:
             course_info = transform.get_course_frame(data, course,
                                                      apply_filter)
-            course_info = transform.sort_dataframe(course_info, ["Sec Name"])
-            # Write the course name to the cell in the column/row before the
+            course_info = transform.sort_dataframe(course_info,
+                                                   ["Sec Name"])
+            # Write course name to the cell in the column/row before the
             # course information.
             worksheet.write(current_row, start_column - 1, course)
             current_row += 1
@@ -115,9 +116,10 @@ def create_fte_excel(data, name, course_codes, first_cell=None,
             # Write total.
             worksheet.write(current_row, start_column - 1, "Total")
             fte_column_index = data.columns.get_loc(
-                "Generated FTE") + start_column if "Generated FTE" in data.columns else start_column + 4
+                "Generated FTE"
+            ) + start_column if "Generated FTE" in data.columns else start_column + 4
             worksheet.write(current_row, fte_column_index,
-                            course_totals.get(course,0))
+                            course_totals.get(course, 0))
             current_row += 1
 
         # Write div total for division, instructor
@@ -127,7 +129,9 @@ def create_fte_excel(data, name, course_codes, first_cell=None,
                 fte_column_index = data.columns.get_loc(
                     "Generated FTE") + start_column
             else:
-                fte_column_index = data.columns.get_loc("Generated FTE") + start_column if "Generated_FTE" in data.columns else start_column + 4
+                fte_column_index = data.columns.get_loc(
+                    "Generated FTE"
+                ) + start_column if "Generated_FTE" in data.columns else start_column + 4
             worksheet.write(current_row, fte_column_index, final_total)
         # Try to fit the columns to the data.
         worksheet.autofit()

@@ -1,29 +1,24 @@
-"""
-This program creates spreadsheets of information on classes offered by FTCC
+""" This program creates spreadsheets of information on classes
+offered by
+FTCC
 03/21/2025
 CSC221 M4Group_Pro_FTE
 Harley Coughlin & Karen Brown
 """
-
 
 import extract
 import menu
 import options
 
 
-
 def main():
-    """
-    Main entry point of the program. Extracts data from required
+    """ Main entry point of the program. Extracts data from required
     files and displays menu for user interaction. Calls corresponding
     functions based on user selection.
-    :return: None
-    """
-
+    :return: None """
 
     filenames = ["deanDailyCsar.csv", "FTE_Tier.xlsx"]
     dfs, error = extract.extract_data(filenames)
-
     if error:
         return  # Exit early if there was an error during extraction
 

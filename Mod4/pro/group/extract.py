@@ -5,7 +5,6 @@ import pandas as pd
 import transform
 
 
-
 def extract_csv(filename):
     """Load CSV file into a Pandas DataFrame
 
@@ -20,10 +19,11 @@ def extract_csv(filename):
         DataFrame containing the CSV information
     """
     assert filename is not None, "Filename should not be None."
-    assert isinstance(filename, str), "Expected filename to be a string" \
-                                      f"instead got {filename}."
+    assert isinstance(filename, str), \
+        f"Expected filename to be a string instead got {filename}."
     assert filename, "File should not be empty"
-    assert filename.endswith(".csv"), f"Expected csv file got {filename}."
+    assert filename.endswith(".csv"), \
+        f"Expected csv file got {filename}."
     file_path = ""
     try:
         file_path = os.path.join(os.getcwd(), filename)
@@ -36,6 +36,7 @@ def extract_csv(filename):
                                        f"empty") from exc
 
     return data
+
 
 def extract_excel(filename):
     """Load Excel file into a Pandas DataFrame
@@ -52,10 +53,11 @@ def extract_excel(filename):
     """
     assert filename is not None, "Filename should not be None."
     assert filename is not None, "Filename should not be None."
-    assert isinstance(filename, str), "Expected filename to be a string" \
-                                      f"instead got {filename}."
+    assert isinstance(filename, str), \
+        f"Expected filename to be a string instead got {filename}."
     assert filename, "File should not be empty"
-    assert filename.endswith(".xlsx"), f"Expected excel file got {filename}."
+    assert filename.endswith(".xlsx"), \
+        f"Expected excel file got {filename}."
     file_path = ""
     try:
         file_path = os.path.join(os.getcwd(), filename)
@@ -72,12 +74,23 @@ def extract_excel(filename):
 
 def extract_data(filenames):
 
-    """Extracts data from files and returns a dictionary of DataFrames."""
+    """
+    Extracts data from files and returns a dictionary of DataFrames.
+    Parameters
+    ----------
+    filename: str
+        Excel filename
 
+    Returns
+    -------
+    dict
+        dictionary of DataFrames
+
+    bool
+        true if error occurs """
 
     dfs = {}
     error = False
-
     for filename in filenames:
         df = None
         print(f"Trying to extract from {filename}.")
@@ -87,11 +100,13 @@ def extract_data(filenames):
             elif filename.endswith(".xlsx"):
                 df = extract_excel(filename=filename)
         except FileNotFoundError as e:
-            print(f"Unable to find {filename}. Please ensure it exists in the current directory.")
+            print(f"Unable to find {filename}. "
+                  f"Please ensure it exists in the current directory.")
             print(f"Technical details: {e}")
             error = True
         except pd.errors.EmptyDataError as e:
-            print(f"The input file {filename} is empty. Please check the file contents.")
+            print(f"The input file {filename} "
+                  f"is empty. Please check the file contents.")
             print(f"Technical details: {e}")
             error = True
 
